@@ -6,7 +6,7 @@ public class Flashlight : MonoBehaviour
 {
     private ParentConstraint _parentConstraint;
     private ConstraintSource _constraintSource;
-
+    
     private Light _lightSource;
     
     private void Start()
@@ -32,9 +32,9 @@ public class Flashlight : MonoBehaviour
 
     private void DetectHits()
     {
-        // We need to get the light cone's radius for the sphere cast to properly detect enemies.
+        // We need to get the light cone's radius to make the sphere cast the correct size. Math, woohoo.
         var innerAngle = _lightSource.innerSpotAngle;
-        var height = _lightSource.range / 8;  // Dividing by 8 here to get the flashlight range closer to how it visibly looks.
+        var height = _lightSource.range / 8;  // Dividing by 8 here to get the flashlight range closer to how it appears.
         var slantHeight = height / Math.Sin(innerAngle);
         var radius = (float)Math.Sqrt(Math.Pow(height, 2) + Math.Pow(slantHeight, 2));
         var sphereCastHits = Physics.SphereCastAll(transform.position, radius, transform.forward, height);
@@ -48,7 +48,7 @@ public class Flashlight : MonoBehaviour
             
             // Second raycast to make sure that the enemy is actually being hit and is within the flashlight cone.
             Physics.Raycast(transform.position, spherecastHit.transform.position - transform.position, out var raycastHit);
-            // Debug.DrawRay(transform.position, spherecastHit.transform.position - transform.position, Color.red);
+            Debug.DrawRay(transform.position, spherecastHit.transform.position - transform.position, Color.cyan);
             
             if (!raycastHit.transform.CompareTag("Enemy")) continue;  // Are we still hitting the enemy, or is an object blocking?
             
