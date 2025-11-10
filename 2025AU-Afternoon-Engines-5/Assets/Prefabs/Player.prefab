@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7719796618797401851}
   - component: {fileID: 1889029182646813251}
   - component: {fileID: 39052311519083178}
+  - component: {fileID: 6871439648200284934}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -84,6 +85,27 @@ MonoBehaviour:
   gravity: -25
   playerHeight: 2
   maxSlopeAngle: 50
+--- !u!114 &6871439648200284934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141273933174162167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63c23de1b16092f47b6b68b284a3007c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waves:
+  - enemies:
+    - {fileID: 4047465093986044905, guid: 11a0ec8af174c0b47ab756d94ee69a4f, type: 3}
+    enemyCounts: 14000000
+    maxSpawn: 10
+    continuous: 0
+  currentWave: 0
+  waveBreakTime: 30
+  remainingBreakTime: 0
 --- !u!1 &4507674434510207882
 GameObject:
   m_ObjectHideFlags: 0
