@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
-[RequireComponent(typeof(Health))]
+[RequireComponent(typeof(HealthSystem))]
 public class ReaperBoss : EnemyAgentBase
 {
     public enum State { Idle, Patrol, Chase, Attack }
@@ -23,13 +23,13 @@ public class ReaperBoss : EnemyAgentBase
     private float dwellTimer = 0f;
     private float attackTimer = 0f;
 
-    Health hp;
+    private HealthSystem hp;
 
     protected override void Start()
     {
         base.Start();
-        hp = GetComponent<Health>();
-        hp.invulnerable = true;            // cannot be killed/captured
+        hp = GetComponent<HealthSystem>();
+        hp.isInvulnerable = true;            // cannot be killed/captured
         agent.speed = 2.4f;                // heavy/inevitable feel
         agent.acceleration = 5f;
         agent.angularSpeed = 120f;

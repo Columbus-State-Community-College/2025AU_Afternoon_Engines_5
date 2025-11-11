@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Health))]
+[RequireComponent(typeof(HealthSystem))]
 public class Ghost_Wanderer : MonoBehaviour
 {
     // This script exists mostly to flag the prefab as "Wanderer"
