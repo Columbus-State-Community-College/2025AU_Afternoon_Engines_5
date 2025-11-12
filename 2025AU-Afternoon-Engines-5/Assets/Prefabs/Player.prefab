@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1889029182646813251}
   - component: {fileID: 39052311519083178}
   - component: {fileID: 6871439648200284934}
+  - component: {fileID: 6325468315717368135}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -100,12 +101,31 @@ MonoBehaviour:
   waves:
   - enemies:
     - {fileID: 2390867321168723843, guid: a029481c2392779409f50ba51365dc6e, type: 3}
-    enemyCounts: 14000000
+    - {fileID: 5507489055903397467, guid: 2ffd5d6c6d6f01e4b94da81db1536370, type: 3}
+    - {fileID: 4126995974043458280, guid: c5bbdca11486b4c408c6f0f837bceb51, type: 3}
+    enemyCounts: 050000000100000004000000
     maxSpawn: 10
     continuous: 0
   currentWave: 0
   waveBreakTime: 30
   remainingBreakTime: 0
+--- !u!114 &6325468315717368135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141273933174162167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33b7251df27f19b4f8a792b139b10398, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 30
+  currentHealth: 30
+  invulnerabilityTime: 1.2
+  isInvulnerable: 0
+  isDead: 0
 --- !u!1 &4507674434510207882
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,6 +345,10 @@ PrefabInstance:
     - target: {fileID: 3224006047699705742, guid: b4a2dec3a67a32f4ea80cd261c08f767, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4316041472096411212, guid: b4a2dec3a67a32f4ea80cd261c08f767, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 8468485493646277253, guid: b4a2dec3a67a32f4ea80cd261c08f767, type: 3}
       propertyPath: m_Name
