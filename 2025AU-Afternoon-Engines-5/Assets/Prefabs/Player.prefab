@@ -346,6 +346,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4316041472096411212, guid: b4a2dec3a67a32f4ea80cd261c08f767, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 8468485493646277253, guid: b4a2dec3a67a32f4ea80cd261c08f767, type: 3}
       propertyPath: m_Name
       value: Flashlight
