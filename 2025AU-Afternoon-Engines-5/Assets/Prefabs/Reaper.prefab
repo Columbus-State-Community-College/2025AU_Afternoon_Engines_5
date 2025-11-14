@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 4896167175988800771}
   - component: {fileID: 5214227470248321018}
   - component: {fileID: 6406628102320111931}
-  - component: {fileID: 1972841739170217538}
   - component: {fileID: 7703460840147414574}
+  - component: {fileID: 7190413142306958141}
   m_Layer: 0
   m_Name: Reaper
   m_TagString: Untagged
@@ -158,20 +158,6 @@ MonoBehaviour:
   attackRange: 2.2
   attackCooldown: 1.75
   attackDamage: 20
---- !u!114 &1972841739170217538
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5507489055903397467}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8046a53e20f91a546af10410b8eea1c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHP: 100
-  invulnerable: 1
 --- !u!114 &7703460840147414574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,3 +173,20 @@ MonoBehaviour:
   hoverHeight: 1.5
   playerTag: Player
   detectRadius: 12
+--- !u!114 &7190413142306958141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5507489055903397467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33b7251df27f19b4f8a792b139b10398, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 0
+  currentHealth: 0
+  invulnerabilityTime: 0
+  isInvulnerable: 0
+  isDead: 0
