@@ -185,8 +185,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33b7251df27f19b4f8a792b139b10398, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
-  currentHealth: 0
+  maxHealth: 30
+  currentHealth: 30
   invulnerabilityTime: 0
-  isInvulnerable: 0
+  isInvulnerable: 1
   isDead: 0

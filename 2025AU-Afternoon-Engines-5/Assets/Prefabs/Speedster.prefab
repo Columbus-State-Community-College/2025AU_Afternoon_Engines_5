@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 4064893125878109516}
   - component: {fileID: 7687583800774638930}
   - component: {fileID: 690207022441394666}
+  - component: {fileID: -1814040262097905084}
   m_Layer: 0
   m_Name: Speedster
   m_TagString: Enemy
@@ -198,3 +199,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedMultiplier: 3
   accelMultiplier: 2
+--- !u!114 &-1814040262097905084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4126995974043458280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33b7251df27f19b4f8a792b139b10398, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 20
+  currentHealth: 20
+  invulnerabilityTime: 0.1
+  isInvulnerable: 0
+  isDead: 0

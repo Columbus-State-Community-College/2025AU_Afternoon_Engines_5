@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 6553658387433032512}
   - component: {fileID: 5113121758082294392}
   - component: {fileID: 2452876090330758895}
+  - component: {fileID: 4251457641520054285}
   m_Layer: 0
   m_Name: Wanderer
   m_TagString: Enemy
@@ -121,7 +122,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 2390867321168723843}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.49
   m_Speed: 2
   m_Acceleration: 5
   avoidancePriority: 50
@@ -183,3 +184,20 @@ MonoBehaviour:
   hoverHeight: 1.5
   playerTag: Player
   detectRadius: 6
+--- !u!114 &4251457641520054285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2390867321168723843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33b7251df27f19b4f8a792b139b10398, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 30
+  currentHealth: 30
+  invulnerabilityTime: 0.1
+  isInvulnerable: 0
+  isDead: 0
