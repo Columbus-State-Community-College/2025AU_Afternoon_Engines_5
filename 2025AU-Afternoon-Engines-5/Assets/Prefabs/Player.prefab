@@ -100,10 +100,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - enemies:
-    - {fileID: 2390867321168723843, guid: a029481c2392779409f50ba51365dc6e, type: 3}
     - {fileID: 5507489055903397467, guid: 2ffd5d6c6d6f01e4b94da81db1536370, type: 3}
+    - {fileID: 2390867321168723843, guid: a029481c2392779409f50ba51365dc6e, type: 3}
     - {fileID: 4126995974043458280, guid: c5bbdca11486b4c408c6f0f837bceb51, type: 3}
-    enemyCounts: 050000000100000004000000
+    enemyCounts: 010000000500000004000000
     maxSpawn: 10
     continuous: 0
   currentWave: 0

@@ -33,13 +33,16 @@ public class WaveSystem : MonoBehaviour
 
         for (var i = 0; i < _enemyList.Count; i++)
         {
-            if (_enemyList[i] is null)
-            {
-                _enemyList.RemoveAt(i);
-            }
+            if (_enemyList[i]) continue;
+            
+            _enemyList.RemoveAt(i);
         }
-        
-        if (_enemyList.Count < waves[currentWave].maxSpawn && _overflowEnemies) SpawnEnemies();
+
+        if (_enemyList.Count < waves[currentWave].maxSpawn && _overflowEnemies)
+        {
+            Debug.Log("Spawning new enemy");
+            SpawnEnemies();
+        }
     }
 
     private void StartWave()
@@ -76,37 +79,45 @@ public class WaveSystem : MonoBehaviour
 
     private void SpawnEnemies()
     {
-        for (var i = 0; i < waves[currentWave].maxSpawn - _enemyList.Count; i++)
+        for (var i = 0; i < waves[currentWave].maxSpawn - _enemyList.Count; ++i)
         {
             var totalCount = waves[currentWave].enemyCounts.Sum();
-
-            if (totalCount < waves[currentWave].maxSpawn && _overflowEnemies && !waves[currentWave].continuous)
+            
+            if (totalCount <= 0)
+            {
                 _overflowEnemies = false;
+                return;
+            }
 
-            if (totalCount == 0) return;
-
-            var randEnemyNumber = Random.Range(1, totalCount + 1);
+            var randEnemyNumber = Random.Range(0, totalCount + 1);
             var oddsCheck = 0;
             GameObject enemy = null;
 
-            for (var j = 0; j < waves[currentWave].enemyCounts.Count; j++)
-            {
-                oddsCheck += waves[currentWave].enemyCounts[j];
-                if (randEnemyNumber > oddsCheck && j < waves[currentWave].enemyCounts.Count - 1) continue;
-
-                enemy = waves[currentWave].enemies[j];
-
-                if (!waves[currentWave].continuous) waves[currentWave].enemyCounts[j] -= 1;
-
-                break;
-            }
-
-            if (enemy is null)
+            if (waves[currentWave].enemies[0].name == "Reaper" && waves[currentWave].enemyCounts[0] > 0)
             {
                 enemy = waves[currentWave].enemies[0];
                 waves[currentWave].enemyCounts[0] -= 1;
             }
-            
+            else
+            {
+                for (var j = 0; j < waves[currentWave].enemies.Count; j++)
+                {
+                    if (waves[currentWave].enemyCounts[j] == 0) continue;
+                    
+                    oddsCheck += waves[currentWave].enemyCounts[j];
+                
+                    if (oddsCheck < randEnemyNumber) continue;
+                    
+                    enemy = waves[currentWave].enemies[j];
+
+                    if (!waves[currentWave].continuous) waves[currentWave].enemyCounts[j] -= 1;
+
+                    break;
+                }
+            }
+
+            if (enemy is null) return;
+
             var offsetX = Random.Range(-_spawnBounds.extents.x, _spawnBounds.extents.x);
             var offsetZ = Random.Range(-_spawnBounds.extents.z, _spawnBounds.extents.z);
             Vector3 spawnPosition = new(offsetX, 0, offsetZ);
