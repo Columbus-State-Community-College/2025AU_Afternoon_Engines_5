@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
 public class WaveSystem : MonoBehaviour
@@ -110,9 +111,8 @@ public class WaveSystem : MonoBehaviour
             var offsetZ = Random.Range(-_spawnBounds.extents.z, _spawnBounds.extents.z);
             Vector3 spawnPosition = new(offsetX, 0, offsetZ);
             var offsetY = Terrain.activeTerrain.SampleHeight(spawnPosition);
-            spawnPosition.y = offsetY + enemy.transform.lossyScale.y / 2;
-            var enemyObject = Instantiate(enemy);
-            enemyObject.transform.position = spawnPosition;
+            spawnPosition.y = offsetY;
+            var enemyObject = Instantiate(enemy, spawnPosition, Quaternion.identity);
             
             _enemyList.Add(enemyObject);
         }

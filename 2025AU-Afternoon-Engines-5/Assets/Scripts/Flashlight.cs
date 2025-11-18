@@ -4,6 +4,10 @@ using UnityEngine.Animations;
 
 public class Flashlight : MonoBehaviour
 {
+    public float baseDamage = 2f;
+    public float rangeModifier = 0.5f;
+    public float angleModifier = 0.5f;
+    
     private ParentConstraint _parentConstraint;
     private ConstraintSource _constraintSource;
     
@@ -25,7 +29,7 @@ public class Flashlight : MonoBehaviour
         _parentConstraint.constraintActive = true;
     }
     
-    private void Update()
+    private void LateUpdate()
     {
         DetectHits();
     }
@@ -41,19 +45,31 @@ public class Flashlight : MonoBehaviour
 
         foreach (var spherecastHit in sphereCastHits)
         {
-            var targetDirection = spherecastHit.transform.position - transform.position;
-            
             if (!spherecastHit.transform.CompareTag("Enemy")) continue;
-            if (Vector3.Angle(targetDirection, transform.forward) > innerAngle) continue;  // Are we inside the flashlight cone?
             
-            // Second raycast to make sure that the enemy is actually being hit and is within the flashlight cone.
-            Physics.Raycast(transform.position, spherecastHit.transform.position - transform.position, out var raycastHit);
-            Debug.DrawRay(transform.position, spherecastHit.transform.position - transform.position, Color.cyan);
+            var targetDirection = spherecastHit.transform.position - transform.position;
+            var hitAngle = Vector3.Angle(targetDirection, transform.forward);
+            
+            if (hitAngle > innerAngle) continue;  // Are we inside the flashlight cone?
+            
+            // Second raycast to make sure that the enemy is actually being hit and is within the flashlight cone.=
+            Physics.Raycast(transform.position, targetDirection, out var raycastHit);
+            // Debug.DrawRay(transform.position, targetDirection, Color.cyan);
             
             if (!raycastHit.transform.CompareTag("Enemy")) continue;  // Are we still hitting the enemy, or is an object blocking?
             
-            // Debug.Log("Hit enemy");
-            // TODO: Implement damaging the enemy based on distance
+            ApplyDamage(hitAngle, raycastHit.distance, raycastHit.transform.gameObject);
         }
+    }
+
+    private void ApplyDamage(float hitAngle, float distance, GameObject target)
+    {
+        var targetHealthComponent = target.GetComponent<HealthSystem>();
+
+        if (targetHealthComponent is null) return;
+
+        var damage = baseDamage * Mathf.Pow(rangeModifier, distance / (_lightSource.range / 8)) * (angleModifier / hitAngle);
+        
+        targetHealthComponent.TakeDamage(damage);
     }
 }
