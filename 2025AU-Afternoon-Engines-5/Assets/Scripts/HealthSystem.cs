@@ -21,6 +21,13 @@ public class HealthSystem : MonoBehaviour
         if (isInvulnerable || isDead) return;
         
         currentHealth -= damage;
+
+        if (currentHealth <= 0)
+        {
+            isDead = true;
+            return;
+        }
+        
         isInvulnerable = true;
         StartCoroutine(InvulnerabilityTimerCoroutine());
     }

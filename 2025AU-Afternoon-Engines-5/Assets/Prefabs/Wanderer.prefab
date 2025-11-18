@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 5113121758082294392}
   - component: {fileID: 2452876090330758895}
   - component: {fileID: 4251457641520054285}
+  - component: {fileID: 3485129581590339601}
   m_Layer: 0
   m_Name: Wanderer
   m_TagString: Enemy
@@ -198,6 +199,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 30
   currentHealth: 30
-  invulnerabilityTime: 0.1
+  invulnerabilityTime: 0
   isInvulnerable: 0
   isDead: 0
+--- !u!114 &3485129581590339601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2390867321168723843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7d6d6ffbbd64d44f8ec31889c0e0479, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathDuration: 1
