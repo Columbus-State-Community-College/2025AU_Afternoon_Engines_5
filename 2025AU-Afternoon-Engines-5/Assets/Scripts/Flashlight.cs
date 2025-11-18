@@ -68,6 +68,7 @@ public class Flashlight : MonoBehaviour
 
         if (targetHealthComponent is null) return;
 
+        if (hitAngle == 0f) hitAngle = 0.00001f;
         var damage = baseDamage * Mathf.Pow(rangeModifier, distance / (_lightSource.range / 8)) * (angleModifier / hitAngle);
         
         targetHealthComponent.TakeDamage(damage);
