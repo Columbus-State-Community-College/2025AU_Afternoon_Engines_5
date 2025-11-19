@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
@@ -12,23 +14,28 @@ public class WaveSystem : MonoBehaviour
     public List<Wave> waves;
     public int currentWave;
     public float waveBreakTime = 30f;
-    [DoNotSerialize] public float remainingBreakTime;
+    [HideInInspector] public float remainingBreakTime;
+    [HideInInspector] public bool allWavesCompleted = false;
 
     private List<GameObject> _enemyList = new();
     private bool _overflowEnemies = true;
     private bool _preparingWave;
     private Bounds _spawnBounds;
     private bool _waveActive;
+    private TextMeshProUGUI _resultText;
 
     private void Start()
     {
         _spawnBounds = GameObject.Find("Spawn Bounds").GetComponent<Collider>().bounds;
+        _resultText = GameObject.Find("UI").transform.Find("ResultsScreen").transform.Find("ResultText").GetComponent<TextMeshProUGUI>();
 
         StartWave();
     }
 
     private void Update()
     {
+        if (allWavesCompleted) ShowWinScreen();
+        
         if (!_waveActive || _preparingWave) return;
 
         for (var i = 0; i < _enemyList.Count; i++)
@@ -38,11 +45,7 @@ public class WaveSystem : MonoBehaviour
             _enemyList.RemoveAt(i);
         }
 
-        if (_enemyList.Count < waves[currentWave].maxSpawn && _overflowEnemies)
-        {
-            Debug.Log("Spawning new enemy");
-            SpawnEnemies();
-        }
+        if (_enemyList.Count < waves[currentWave].maxSpawn && _overflowEnemies) SpawnEnemies();
     }
 
     private void StartWave()
@@ -62,6 +65,7 @@ public class WaveSystem : MonoBehaviour
         currentWave++;
         DestroyEnemies();
         StartCoroutine(WaveBreakCoroutine());
+        if (currentWave > waves.Count) allWavesCompleted = true;
     }
 
     private IEnumerator WaveBreakCoroutine()
@@ -133,6 +137,12 @@ public class WaveSystem : MonoBehaviour
     {
         foreach (var enemy in _enemyList) Destroy(enemy);
         _enemyList.Clear();
+    }
+
+    private void ShowWinScreen()
+    {
+        _resultText.text = "You win!";
+        Time.timeScale = 0f;
     }
 }
 
