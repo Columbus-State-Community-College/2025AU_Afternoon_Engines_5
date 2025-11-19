@@ -12,7 +12,7 @@ using Random = UnityEngine.Random;
 public class WaveSystem : MonoBehaviour
 {
     public List<Wave> waves;
-    public int currentWave;
+    public int currentWave = 0;
     public float waveBreakTime = 30f;
     [HideInInspector] public float remainingBreakTime;
     [HideInInspector] public bool allWavesCompleted = false;
@@ -46,6 +46,8 @@ public class WaveSystem : MonoBehaviour
         }
 
         if (_enemyList.Count < waves[currentWave].maxSpawn && _overflowEnemies) SpawnEnemies();
+
+        if (CheckForWin()) EndWave();
     }
 
     private void StartWave()
@@ -65,7 +67,7 @@ public class WaveSystem : MonoBehaviour
         currentWave++;
         DestroyEnemies();
         StartCoroutine(WaveBreakCoroutine());
-        if (currentWave > waves.Count) allWavesCompleted = true;
+        if (currentWave > waves.Count - 1) allWavesCompleted = true;
     }
 
     private IEnumerator WaveBreakCoroutine()
@@ -143,6 +145,16 @@ public class WaveSystem : MonoBehaviour
     {
         _resultText.text = "You win!";
         Time.timeScale = 0f;
+    }
+
+    private bool CheckForWin()
+    {
+        foreach (var enemy in _enemyList)
+        {
+            if (!enemy.name.Contains("Reaper")) return false;
+        }
+
+        return true;
     }
 }
 
