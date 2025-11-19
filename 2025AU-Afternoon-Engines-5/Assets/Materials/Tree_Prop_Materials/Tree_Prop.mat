@@ -126,8 +126,9 @@ Material:
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 0
-    - _TextureResolution: 800
-    - _VertexResolution: 20
+    - _TextureResolution: 400
+    - _UsePixelation: 1
+    - _VertexResolution: 32
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
