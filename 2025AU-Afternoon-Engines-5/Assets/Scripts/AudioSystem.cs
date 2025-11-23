@@ -131,8 +131,8 @@ public class AudioSystem : MonoBehaviour
         foreach (var audioObject in _activeAudioObjects)
         {
             if (audioObject.audioSource.clip != _audioLookup[audioTag]) continue;
-            
-            audioObject.audioSource.UnPause();
+
+            audioObject.paused = false;
             audioObject.audioSource.Stop();
             break;
         }
@@ -145,6 +145,7 @@ public class AudioSystem : MonoBehaviour
             if (audioObject.audioSource.clip != _audioLookup[audioTag]) continue;
             
             StartCoroutine(FadeOutSoundCoroutine(audioObject.audioSource, fadeTime));
+            audioObject.paused = false;
             break;
         }
     }
