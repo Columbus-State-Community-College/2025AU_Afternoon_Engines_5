@@ -126,6 +126,18 @@ public class AudioSystem : MonoBehaviour
         }
     }
 
+    public void StopSound(string audioTag)
+    {
+        foreach (var audioObject in _activeAudioObjects)
+        {
+            if (audioObject.audioSource.clip != _audioLookup[audioTag]) continue;
+            
+            audioObject.audioSource.UnPause();
+            audioObject.audioSource.Stop();
+            break;
+        }
+    }
+
     public void FadeOutSound(string audioTag, float fadeTime)
     {
         foreach (var audioObject in _activeAudioObjects)
