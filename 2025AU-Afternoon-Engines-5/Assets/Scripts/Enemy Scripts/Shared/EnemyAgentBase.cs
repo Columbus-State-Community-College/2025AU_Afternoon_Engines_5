@@ -11,7 +11,7 @@ public class EnemyAgentBase : MonoBehaviour
     [Header("Perception")]
     public float detectRadius = 10f;
 
-    protected NavMeshAgent agent;
+    public NavMeshAgent agent;
     protected Transform player;
     protected float timer;
 
