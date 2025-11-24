@@ -10,6 +10,8 @@ public class AudioSystem : MonoBehaviour
     private readonly Dictionary<string, AudioClip> _audioLookup = new();
     private List<AudioObject> _activeAudioObjects;
     private bool _globalPause = false;
+    private int _lastMusicVolume;
+    private int _lastSfxVolume;
 
     private void Start()
     {
@@ -23,6 +25,9 @@ public class AudioSystem : MonoBehaviour
         {
             _audioLookup.Add(audioTags[i], audioClips[i]);
         }
+        
+        _lastMusicVolume = MainManager.Instance.musicVolume;
+        _lastSfxVolume = MainManager.Instance.sfxVolume;
     }
 
     private void Update()
@@ -34,6 +39,8 @@ public class AudioSystem : MonoBehaviour
                 _globalPause = true;
                 foreach (var audioObject in _activeAudioObjects)
                 {
+                    if (audioObject.audioType == AudioType.Music) continue;
+                    
                     audioObject.audioSource.Pause();
                 }
 
@@ -53,6 +60,13 @@ public class AudioSystem : MonoBehaviour
             }
         }
 
+        if (_lastMusicVolume != MainManager.Instance.musicVolume || _lastSfxVolume != MainManager.Instance.sfxVolume)
+        {
+            _lastMusicVolume = MainManager.Instance.musicVolume;
+            _lastSfxVolume = MainManager.Instance.sfxVolume;
+            UpdateVolume();
+        }
+
         if (_globalPause) return;
 
         for (var i = _activeAudioObjects.Count - 1; i >= 0; i--)
@@ -68,7 +82,7 @@ public class AudioSystem : MonoBehaviour
     public void PlayGlobalAudio(string audioTag, AudioType type, bool loop = false)
     {
         var audioSource = gameObject.AddComponent<AudioSource>();
-        AudioObject audioObject = new(audioSource)
+        AudioObject audioObject = new(audioSource, type)
         {
             audioSource =
             {
@@ -85,7 +99,7 @@ public class AudioSystem : MonoBehaviour
     public void PlaySpatialAudio(string audioTag, AudioType type, float maxDistance, bool loop = false)
     {
         var audioSource = gameObject.AddComponent<AudioSource>();
-        AudioObject audioObject = new(audioSource)
+        AudioObject audioObject = new(audioSource, type)
         {
             audioSource =
             {
@@ -149,6 +163,31 @@ public class AudioSystem : MonoBehaviour
             break;
         }
     }
+
+    private void UpdateVolume()
+    {
+        var sfxVolume = MainManager.Instance.sfxVolume / 100f;
+        var musicVolume = MainManager.Instance.musicVolume / 100f;
+        
+        foreach (var audioObject in _activeAudioObjects)
+        {
+            switch (audioObject.audioType)
+            {
+                case AudioType.SoundEffect:
+                    if (Mathf.Approximately(audioObject.audioSource.volume, sfxVolume)) continue;
+                    
+                    audioObject.audioSource.volume = sfxVolume;
+                    break;
+                case AudioType.Music:
+                    if (Mathf.Approximately(audioObject.audioSource.volume, musicVolume)) continue;
+                    
+                    audioObject.audioSource.volume = musicVolume;
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
     
     private IEnumerator FadeOutSoundCoroutine(AudioSource audioSource, float fadeTime)
     {
@@ -170,11 +209,13 @@ public class AudioSystem : MonoBehaviour
 public class AudioObject
 {
     public AudioSource audioSource;
+    public AudioType audioType;
     public bool paused = false;
 
-    public AudioObject(AudioSource audioSource, bool paused = false)
+    public AudioObject(AudioSource audioSource, AudioType audioType, bool paused = false)
     {
         this.audioSource = audioSource;
+        this.audioType = audioType;
         this.paused = paused;
     }
 }
