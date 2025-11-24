@@ -142,9 +142,12 @@ public class AudioSystem : MonoBehaviour
         foreach (var audioObject in _activeAudioObjects)
         {
             if (audioObject.audioSource.clip != audioClip) continue;
+
+            if (audioObject.fading) break;
             
             StartCoroutine(FadeOutSoundCoroutine(audioObject.audioSource, fadeTime));
             audioObject.paused = false;
+            audioObject.fading = true;
             break;
         }
     }
@@ -208,6 +211,7 @@ public class AudioObject
     public AudioSource audioSource;
     public AudioType audioType;
     public bool paused = false;
+    public bool fading = false;
 
     public AudioObject(AudioSource audioSource, AudioType audioType, bool paused = false)
     {
