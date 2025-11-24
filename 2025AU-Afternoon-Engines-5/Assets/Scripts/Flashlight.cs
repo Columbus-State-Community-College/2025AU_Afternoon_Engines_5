@@ -7,6 +7,8 @@ public class Flashlight : MonoBehaviour
     public float baseDamage = 2f;
     public float rangeModifier = 0.5f;
     public float angleModifier = 0.5f;
+
+    public bool damaging = false;
     
     private ParentConstraint _parentConstraint;
     private ConstraintSource _constraintSource;
@@ -42,10 +44,13 @@ public class Flashlight : MonoBehaviour
         var slantHeight = height / Math.Sin(innerAngle);
         var radius = (float)Math.Sqrt(Math.Pow(height, 2) + Math.Pow(slantHeight, 2));
         var sphereCastHits = Physics.SphereCastAll(transform.position, radius, transform.forward, height);
+        var hittingEnemy = false;
 
         foreach (var spherecastHit in sphereCastHits)
         {
             if (!spherecastHit.transform.CompareTag("Enemy")) continue;
+            
+            if (spherecastHit.transform.name.Contains("Reaper")) continue;  // Reapers are invincible, no point in checking.
             
             var targetDirection = spherecastHit.transform.position - transform.position;
             var hitAngle = Vector3.Angle(targetDirection, transform.forward);
@@ -59,7 +64,10 @@ public class Flashlight : MonoBehaviour
             if (!raycastHit.transform.CompareTag("Enemy")) continue;  // Are we still hitting the enemy, or is an object blocking?
             
             ApplyDamage(hitAngle, raycastHit.distance, raycastHit.transform.gameObject);
+            if (!hittingEnemy) hittingEnemy = true;
         }
+
+        damaging = hittingEnemy;
     }
 
     private void ApplyDamage(float hitAngle, float distance, GameObject target)

@@ -132,6 +132,8 @@ GameObject:
   - component: {fileID: 3224006047699705742}
   - component: {fileID: -886411633349856927}
   - component: {fileID: 6889258748602807889}
+  - component: {fileID: 5798369240880918242}
+  - component: {fileID: 2854595694331717223}
   m_Layer: 0
   m_Name: Flashlight
   m_TagString: Untagged
@@ -194,6 +196,34 @@ MonoBehaviour:
   baseDamage: 7
   rangeModifier: 0.5
   angleModifier: 0.5
+--- !u!114 &5798369240880918242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8468485493646277253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db4b6c403aa64b4785d019fb213b35b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2854595694331717223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8468485493646277253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecb9a561db70aaf4ea2978a12344bf22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioTags:
+  - sfx_damaging
+  audioClips:
+  - {fileID: 8300000, guid: 2a4fc446f4d9735428fc9ca32a44b3b2, type: 3}
 --- !u!1 &9172937434464443649
 GameObject:
   m_ObjectHideFlags: 0

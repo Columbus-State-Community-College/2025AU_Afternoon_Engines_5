@@ -10,7 +10,7 @@ public class AudioController : MonoBehaviour
     protected Dictionary<string, AudioClip> audioLookup = new();
     protected AudioSystem audioSystem;
 
-    void Start()
+    protected virtual void Start()
     {
         audioSystem = GetComponent<AudioSystem>();
         
