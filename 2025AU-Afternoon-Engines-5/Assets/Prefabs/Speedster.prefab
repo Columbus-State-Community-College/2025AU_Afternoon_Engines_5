@@ -19,6 +19,8 @@ GameObject:
   - component: {fileID: 690207022441394666}
   - component: {fileID: -1814040262097905084}
   - component: {fileID: -5327587669315506346}
+  - component: {fileID: 7392689344533519988}
+  - component: {fileID: 1119052041111532104}
   m_Layer: 0
   m_Name: Speedster
   m_TagString: Enemy
@@ -152,6 +154,7 @@ MonoBehaviour:
   hoverHeight: 1.5
   playerTag: Player
   detectRadius: 10
+  agent: {fileID: 0}
   wanderRadius: 10
   changeDirectionInterval: 4
 --- !u!114 &4064893125878109516
@@ -169,6 +172,7 @@ MonoBehaviour:
   hoverHeight: 1.5
   playerTag: Player
   detectRadius: 10
+  agent: {fileID: 0}
   fleeTriggerDistance: 6
   fleeBurstDistance: 8
 --- !u!114 &7687583800774638930
@@ -186,6 +190,7 @@ MonoBehaviour:
   hoverHeight: 1.5
   playerTag: Player
   detectRadius: 6
+  agent: {fileID: 0}
 --- !u!114 &690207022441394666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,3 +235,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathDuration: 1
+--- !u!114 &7392689344533519988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4126995974043458280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db4b6c403aa64b4785d019fb213b35b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1119052041111532104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4126995974043458280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08c1db15566e7ee4aa453c759265bd63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioTags:
+  - sfx_death
+  - sfx_wandering
+  audioClips:
+  - {fileID: 8300000, guid: 7f7b32c6ef6f0ad4893109c234c7f6db, type: 3}
+  - {fileID: 8300000, guid: ef4b072c8d516fb4cb9953584636be1c, type: 3}
+  deathSfxDistance: 3
+  wanderSfxDistance: 10

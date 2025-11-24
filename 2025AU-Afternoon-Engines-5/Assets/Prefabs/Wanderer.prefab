@@ -18,6 +18,8 @@ GameObject:
   - component: {fileID: 2452876090330758895}
   - component: {fileID: 4251457641520054285}
   - component: {fileID: 3485129581590339601}
+  - component: {fileID: 7873558955771913501}
+  - component: {fileID: 2396016477971401923}
   m_Layer: 0
   m_Name: Wanderer
   m_TagString: Enemy
@@ -151,6 +153,7 @@ MonoBehaviour:
   hoverHeight: 1.5
   playerTag: Player
   detectRadius: 10
+  agent: {fileID: 0}
   wanderRadius: 10
   changeDirectionInterval: 4
 --- !u!114 &5113121758082294392
@@ -168,6 +171,7 @@ MonoBehaviour:
   hoverHeight: 1.5
   playerTag: Player
   detectRadius: 10
+  agent: {fileID: 0}
   fleeTriggerDistance: 6
   fleeBurstDistance: 8
 --- !u!114 &2452876090330758895
@@ -185,6 +189,7 @@ MonoBehaviour:
   hoverHeight: 1.5
   playerTag: Player
   detectRadius: 6
+  agent: {fileID: 0}
 --- !u!114 &4251457641520054285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,3 +220,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathDuration: 1
+--- !u!114 &7873558955771913501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2390867321168723843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db4b6c403aa64b4785d019fb213b35b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2396016477971401923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2390867321168723843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08c1db15566e7ee4aa453c759265bd63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioTags:
+  - sfx_death
+  - sfx_wandering
+  audioClips:
+  - {fileID: 8300000, guid: 7f7b32c6ef6f0ad4893109c234c7f6db, type: 3}
+  - {fileID: 8300000, guid: ef4b072c8d516fb4cb9953584636be1c, type: 3}
+  deathSfxDistance: 3
+  wanderSfxDistance: 10
