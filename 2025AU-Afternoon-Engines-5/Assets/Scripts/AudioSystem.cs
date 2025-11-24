@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class AudioSystem : MonoBehaviour
 {
-    public string[] audioTags;
-    public AudioClip[] audioClips;
-
-    private readonly Dictionary<string, AudioClip> _audioLookup = new();
     private List<AudioObject> _activeAudioObjects;
     private bool _globalPause = false;
     private int _lastMusicVolume;
@@ -15,17 +11,6 @@ public class AudioSystem : MonoBehaviour
 
     private void Start()
     {
-        if (audioTags.Length != audioClips.Length)
-        {
-            Debug.LogWarning("The audioTags and audioClips arrays have different lengths. Please correct this.");
-            return;
-        }
-
-        for (var i = 0; i < audioTags.Length; i++)
-        {
-            _audioLookup.Add(audioTags[i], audioClips[i]);
-        }
-        
         _lastMusicVolume = MainManager.Instance.musicVolume;
         _lastSfxVolume = MainManager.Instance.sfxVolume;
     }
@@ -79,14 +64,14 @@ public class AudioSystem : MonoBehaviour
         }
     }
 
-    public void PlayGlobalAudio(string audioTag, AudioType type, bool loop = false)
+    public void PlayGlobalAudio(AudioClip audioClip, AudioType type, bool loop = false)
     {
         var audioSource = gameObject.AddComponent<AudioSource>();
         AudioObject audioObject = new(audioSource, type)
         {
             audioSource =
             {
-                clip = _audioLookup[audioTag],
+                clip = audioClip,
                 loop = loop,
                 volume = (type == 0 ? MainManager.Instance.sfxVolume : MainManager.Instance.musicVolume) / 100f
             }
@@ -96,14 +81,14 @@ public class AudioSystem : MonoBehaviour
         _activeAudioObjects.Add(audioObject);
     }
 
-    public void PlaySpatialAudio(string audioTag, AudioType type, float maxDistance, bool loop = false)
+    public void PlaySpatialAudio(AudioClip audioClip, AudioType type, float maxDistance, bool loop = false)
     {
         var audioSource = gameObject.AddComponent<AudioSource>();
         AudioObject audioObject = new(audioSource, type)
         {
             audioSource =
             {
-                clip = _audioLookup[audioTag],
+                clip = audioClip,
                 spatialize = true,
                 spatialBlend = 1f,
                 maxDistance = maxDistance,
@@ -116,11 +101,11 @@ public class AudioSystem : MonoBehaviour
         _activeAudioObjects.Add(audioObject);
     }
 
-    public void PauseSound(string audioTag)
+    public void PauseSound(AudioClip audioClip)
     {
         foreach (var audioObject in _activeAudioObjects)
         {
-            if (audioObject.paused || audioObject.audioSource.clip != _audioLookup[audioTag]) continue;
+            if (audioObject.paused || audioObject.audioSource.clip != audioClip) continue;
 
             audioObject.audioSource.Pause();
             audioObject.paused = true;
@@ -128,11 +113,11 @@ public class AudioSystem : MonoBehaviour
         }
     }
 
-    public void ResumeSound(string audioTag)
+    public void ResumeSound(AudioClip audioClip)
     {
         foreach (var audioObject in _activeAudioObjects)
         {
-            if (!audioObject.paused || audioObject.audioSource.clip != _audioLookup[audioTag]) continue;
+            if (!audioObject.paused || audioObject.audioSource.clip != audioClip) continue;
 
             audioObject.audioSource.UnPause();
             audioObject.paused = false;
@@ -140,11 +125,11 @@ public class AudioSystem : MonoBehaviour
         }
     }
 
-    public void StopSound(string audioTag)
+    public void StopSound(AudioClip audioClip)
     {
         foreach (var audioObject in _activeAudioObjects)
         {
-            if (audioObject.audioSource.clip != _audioLookup[audioTag]) continue;
+            if (audioObject.audioSource.clip != audioClip) continue;
 
             audioObject.paused = false;
             audioObject.audioSource.Stop();
@@ -152,11 +137,11 @@ public class AudioSystem : MonoBehaviour
         }
     }
 
-    public void FadeOutSound(string audioTag, float fadeTime)
+    public void FadeOutSound(AudioClip audioClip, float fadeTime)
     {
         foreach (var audioObject in _activeAudioObjects)
         {
-            if (audioObject.audioSource.clip != _audioLookup[audioTag]) continue;
+            if (audioObject.audioSource.clip != audioClip) continue;
             
             StartCoroutine(FadeOutSoundCoroutine(audioObject.audioSource, fadeTime));
             audioObject.paused = false;
