@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AudioSystem : MonoBehaviour
 {
-    private List<AudioObject> _activeAudioObjects;
+    private List<AudioObject> _activeAudioObjects = new();
     private bool _globalPause = false;
     private int _lastMusicVolume;
     private int _lastSfxVolume;
@@ -147,6 +147,18 @@ public class AudioSystem : MonoBehaviour
             audioObject.paused = false;
             break;
         }
+    }
+
+    public bool SoundExists(AudioClip audioClip)
+    {
+        foreach (var audioObject in _activeAudioObjects)
+        {
+            if (audioObject.audioSource.clip != audioClip) continue;
+
+            return true;
+        }
+
+        return false;
     }
 
     private void UpdateVolume()
