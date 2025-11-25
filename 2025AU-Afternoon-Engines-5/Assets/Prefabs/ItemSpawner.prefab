@@ -49,7 +49,7 @@ MonoBehaviour:
     pickupPrefab: {fileID: 4711567007973997856, guid: 317c64e7cce73494d8abbc68f1d4cf91, type: 3}
     chance: 0.503
     minAmount: 1
-    maxAmount: 5
+    maxAmount: 1
   spawnPoints: []
   useArea: 1
   areaSize: {x: 10, y: 15}
