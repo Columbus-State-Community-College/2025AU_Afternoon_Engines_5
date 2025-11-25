@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 6406628102320111931}
   - component: {fileID: 7703460840147414574}
   - component: {fileID: 7190413142306958141}
+  - component: {fileID: 1602967564680983664}
+  - component: {fileID: 1143801261781133257}
   m_Layer: 0
   m_Name: Reaper
   m_TagString: Enemy
@@ -151,6 +153,7 @@ MonoBehaviour:
   hoverHeight: 1.5
   playerTag: Player
   detectRadius: 10
+  agent: {fileID: 0}
   state: 1
   patrolRadius: 15
   nodeDwellTime: 2
@@ -173,6 +176,7 @@ MonoBehaviour:
   hoverHeight: 1.5
   playerTag: Player
   detectRadius: 12
+  agent: {fileID: 0}
 --- !u!114 &7190413142306958141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,3 +194,42 @@ MonoBehaviour:
   invulnerabilityTime: 0
   isInvulnerable: 1
   isDead: 0
+--- !u!114 &1602967564680983664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5507489055903397467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db4b6c403aa64b4785d019fb213b35b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sourceAllocation: 3
+--- !u!114 &1143801261781133257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5507489055903397467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08c1db15566e7ee4aa453c759265bd63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioTags:
+  - sfx_attack
+  - sfx_hurt
+  - sfx_wandering
+  - sfx_death
+  audioClips:
+  - {fileID: 8300000, guid: 24d7e2b6432593c41bc97d8f97c955f4, type: 3}
+  - {fileID: 8300000, guid: a84bf4233e4267f43bfc301b7bcddebb, type: 3}
+  - {fileID: 8300000, guid: f2c7ba6bc77ef44419380b45be8e7adf, type: 3}
+  - {fileID: 8300000, guid: 40fd261402ea8da4fb5f1718a2f2f10d, type: 3}
+  deathSfxDistance: 3
+  hurtSfxDistance: 3
+  wanderSfxDistance: 10
+  randomMax: 5000
