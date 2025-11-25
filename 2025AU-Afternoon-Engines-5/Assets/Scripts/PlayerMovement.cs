@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class PlayerMovement : MonoBehaviour
     [Header("Slope Handling")]
     public float maxSlopeAngle;
     
+    [FormerlySerializedAs("_state")] public MovementState playerState;
+    
     private Transform _orientation;
 
     private float _horizontalInput;
@@ -33,17 +36,16 @@ public class PlayerMovement : MonoBehaviour
     private bool _canJump;
 
     private ConstantForce _gravityForce;
-
-    private MovementState _state;
-
+    
     private RaycastHit _slopeHit;
     private bool _exitingSlope;
 
-    private enum MovementState
+    public enum MovementState
     {
         Walking,
         Sprinting,
-        Airborne
+        Airborne,
+        Idle
     }
 
     private void Start()
@@ -147,17 +149,21 @@ public class PlayerMovement : MonoBehaviour
         switch (_grounded)
         {
             case true when Input.GetButton("Sprint"):
-                _state = MovementState.Sprinting;
+                playerState = MovementState.Sprinting;
                 _moveSpeed = sprintSpeed;
                 break;
             case true:
-                _state = MovementState.Walking;
+                playerState = MovementState.Walking;
                 _moveSpeed = walkSpeed;
                 break;
             default:
-                _state = MovementState.Airborne;
+                playerState = MovementState.Airborne;
                 break;
         }
+
+        if (_horizontalInput != 0 || _verticalInput != 0 || playerState == MovementState.Airborne) return;
+        
+        playerState = MovementState.Idle;
     }
 
     private bool OnSlope()
