@@ -3205,18 +3205,6 @@ PrefabInstance:
       value: GrimReaper_NPC
       objectReference: {fileID: 0}
     - target: {fileID: 1857900731082351814, guid: 165ddd62ce14c49b9807e6a059adc096, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.21205649
-      objectReference: {fileID: 0}
-    - target: {fileID: 1857900731082351814, guid: 165ddd62ce14c49b9807e6a059adc096, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.21205649
-      objectReference: {fileID: 0}
-    - target: {fileID: 1857900731082351814, guid: 165ddd62ce14c49b9807e6a059adc096, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.21205649
-      objectReference: {fileID: 0}
-    - target: {fileID: 1857900731082351814, guid: 165ddd62ce14c49b9807e6a059adc096, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.01
       objectReference: {fileID: 0}
