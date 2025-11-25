@@ -164,6 +164,28 @@ public class AudioSystem : MonoBehaviour
         return false;
     }
 
+    public void DisableLoop(AudioClip audioClip)
+    {
+        foreach (var audioObject in _activeAudioObjects)
+        {
+            if (audioObject.audioSource.clip != audioClip) continue;
+            
+            audioObject.audioSource.loop = false;
+        }
+    }
+
+    public bool LoopEnabled(AudioClip audioClip)
+    {
+        foreach (var audioObject in _activeAudioObjects)
+        {
+            if (audioObject.audioSource.clip != audioClip) continue;
+            
+            return audioObject.audioSource.loop;
+        }
+
+        return false;
+    }
+
     private void UpdateVolume()
     {
         var sfxVolume = MainManager.Instance.sfxVolume / 100f;
