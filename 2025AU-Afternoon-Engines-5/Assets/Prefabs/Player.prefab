@@ -18,6 +18,8 @@ GameObject:
   - component: {fileID: 7713081903144632964}
   - component: {fileID: 5179284028084854032}
   - component: {fileID: 8899543492053438125}
+  - component: {fileID: 365478765490742113}
+  - component: {fileID: 6285214071242304464}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -211,6 +213,44 @@ MonoBehaviour:
   interactKey: 101
   playerTag: Player
   promptUI: {fileID: 0}
+--- !u!114 &365478765490742113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141273933174162167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db4b6c403aa64b4785d019fb213b35b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6285214071242304464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141273933174162167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 546d365844c00594fa150b4e689cc8d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioTags:
+  - sfx_pickup
+  - sfx_hurt
+  - sfx_death
+  - sfx_heal
+  - sfx_run
+  - sfx_walk
+  audioClips:
+  - {fileID: 8300000, guid: 2aefc3bc57d3cc545b6a53a2551726ae, type: 3}
+  - {fileID: 8300000, guid: 1c237e8c26062a6408bf6585bda3c39d, type: 3}
+  - {fileID: 8300000, guid: 8cfcc3b20fff592489f605a56acb9149, type: 3}
+  - {fileID: 8300000, guid: 63003cae691c72a48a8f9902be1f7dfa, type: 3}
+  - {fileID: 8300000, guid: 7e93573ee36008148ae17553feb37155, type: 3}
+  - {fileID: 8300000, guid: 478a3342091863a41bed900dffb7ac4b, type: 3}
 --- !u!1 &4507674434510207882
 GameObject:
   m_ObjectHideFlags: 0
