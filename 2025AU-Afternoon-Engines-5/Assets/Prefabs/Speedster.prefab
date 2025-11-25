@@ -262,8 +262,10 @@ MonoBehaviour:
   audioTags:
   - sfx_death
   - sfx_wandering
+  - sfx_hurt
   audioClips:
   - {fileID: 8300000, guid: 7f7b32c6ef6f0ad4893109c234c7f6db, type: 3}
   - {fileID: 8300000, guid: ef4b072c8d516fb4cb9953584636be1c, type: 3}
+  - {fileID: 8300000, guid: 664400dcdf09a5d44954f96ed3711cc7, type: 3}
   deathSfxDistance: 3
   wanderSfxDistance: 10
