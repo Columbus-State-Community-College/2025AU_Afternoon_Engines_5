@@ -13,6 +13,8 @@ public class WaveSystem : MonoBehaviour
     public float waveBreakTime = 30f;
     [HideInInspector] public float remainingBreakTime;
     [HideInInspector] public bool allWavesCompleted = false;
+    public string winCollectibleId;
+    public int winCollectibleCount;
 
     private List<GameObject> _enemyList = new();
     private bool _overflowEnemies = true;
@@ -20,11 +22,13 @@ public class WaveSystem : MonoBehaviour
     private Bounds _spawnBounds;
     private bool _waveActive;
     private TextMeshProUGUI _resultText;
+    private PlayerInventory _playerInventory;
 
     private void Start()
     {
         _spawnBounds = GameObject.Find("Spawn Bounds").GetComponent<Collider>().bounds;
         _resultText = GameObject.Find("UI").transform.Find("ResultsScreen").transform.Find("ResultText").GetComponent<TextMeshProUGUI>();
+        _playerInventory = GetComponent<PlayerInventory>();
 
         StartWave();
     }
@@ -144,7 +148,7 @@ public class WaveSystem : MonoBehaviour
         Time.timeScale = 0f;
     }
 
-    private bool CheckForWin()
+    /*private bool CheckForWin()
     {
         foreach (var enemy in _enemyList)
         {
@@ -152,6 +156,18 @@ public class WaveSystem : MonoBehaviour
         }
 
         return true;
+    }*/
+
+    private bool CheckForWin()
+    {
+        foreach (var stack in _playerInventory.items)
+        {
+            if (stack.def.id != winCollectibleId || stack.count < winCollectibleCount) continue;
+
+            return true;
+        }
+
+        return false;
     }
 }
 

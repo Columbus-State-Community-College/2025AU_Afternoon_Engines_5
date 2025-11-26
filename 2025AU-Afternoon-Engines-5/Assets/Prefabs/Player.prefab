@@ -116,6 +116,7 @@ MonoBehaviour:
   gravity: -25
   playerHeight: 2
   maxSlopeAngle: 50
+  playerState: 0
 --- !u!114 &6871439648200284934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,6 +141,8 @@ MonoBehaviour:
   waveBreakTime: 30
   remainingBreakTime: 0
   allWavesCompleted: 0
+  winCollectibleId: battery
+  winCollectibleCount: 3
 --- !u!114 &6325468315717368135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,6 +198,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   items: []
+  pickupEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &8899543492053438125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,6 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7db4b6c403aa64b4785d019fb213b35b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sourceAllocation: 3
 --- !u!114 &6285214071242304464
 MonoBehaviour:
   m_ObjectHideFlags: 0
