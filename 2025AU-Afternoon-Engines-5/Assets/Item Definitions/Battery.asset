@@ -15,5 +15,5 @@ MonoBehaviour:
   id: battery
   displayName: Battery
   icon: {fileID: 0}
-  stackable: 0
+  stackable: 1
   maxStack: 99
