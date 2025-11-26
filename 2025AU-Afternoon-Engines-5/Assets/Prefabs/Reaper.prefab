@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 7190413142306958141}
   - component: {fileID: 1602967564680983664}
   - component: {fileID: 1143801261781133257}
+  - component: {fileID: 828239763071192457}
   m_Layer: 0
   m_Name: Reaper
   m_TagString: Enemy
@@ -233,3 +234,19 @@ MonoBehaviour:
   hurtSfxDistance: 3
   wanderSfxDistance: 10
   randomMax: 5000
+--- !u!114 &828239763071192457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5507489055903397467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7807a1201aa812b469c847e1be8cc5f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageAmount: 15
+  damageRadius: 2
+  damageCooldown: 1.5
+  playerTag: Player

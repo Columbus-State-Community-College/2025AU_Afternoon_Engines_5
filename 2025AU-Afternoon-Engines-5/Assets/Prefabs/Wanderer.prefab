@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 3485129581590339601}
   - component: {fileID: 7873558955771913501}
   - component: {fileID: 2396016477971401923}
+  - component: {fileID: 7376730603761229452}
   m_Layer: 0
   m_Name: Wanderer
   m_TagString: Enemy
@@ -232,6 +233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7db4b6c403aa64b4785d019fb213b35b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sourceAllocation: 3
 --- !u!114 &2396016477971401923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,4 +255,22 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ef4b072c8d516fb4cb9953584636be1c, type: 3}
   - {fileID: 8300000, guid: 664400dcdf09a5d44954f96ed3711cc7, type: 3}
   deathSfxDistance: 3
+  hurtSfxDistance: 3
   wanderSfxDistance: 10
+  randomMax: 5000
+--- !u!114 &7376730603761229452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2390867321168723843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7807a1201aa812b469c847e1be8cc5f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageAmount: 5
+  damageRadius: 1
+  damageCooldown: 1
+  playerTag: Player

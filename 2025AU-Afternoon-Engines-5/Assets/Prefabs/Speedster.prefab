@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: -5327587669315506346}
   - component: {fileID: 7392689344533519988}
   - component: {fileID: 1119052041111532104}
+  - component: {fileID: -5130317495215806645}
   m_Layer: 0
   m_Name: Speedster
   m_TagString: Enemy
@@ -247,6 +248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7db4b6c403aa64b4785d019fb213b35b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sourceAllocation: 3
 --- !u!114 &1119052041111532104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,4 +270,22 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ef4b072c8d516fb4cb9953584636be1c, type: 3}
   - {fileID: 8300000, guid: 664400dcdf09a5d44954f96ed3711cc7, type: 3}
   deathSfxDistance: 3
+  hurtSfxDistance: 3
   wanderSfxDistance: 10
+  randomMax: 5000
+--- !u!114 &-5130317495215806645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4126995974043458280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7807a1201aa812b469c847e1be8cc5f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageAmount: 7
+  damageRadius: 1.25
+  damageCooldown: 0.8
+  playerTag: Player
