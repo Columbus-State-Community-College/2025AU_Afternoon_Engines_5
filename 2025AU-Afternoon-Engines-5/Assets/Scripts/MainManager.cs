@@ -9,6 +9,8 @@ public class MainManager : MonoBehaviour
     public float sensY = 2f;
     public int musicVolume = 50;
     public int sfxVolume = 50;
+    public bool capFPS = false;
+    public int fps = 60;
     
     // State information
     public bool paused = false;
