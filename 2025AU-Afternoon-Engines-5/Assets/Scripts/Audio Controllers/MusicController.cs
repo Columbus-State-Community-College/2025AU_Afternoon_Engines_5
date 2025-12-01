@@ -3,12 +3,21 @@ using UnityEngine.SceneManagement;
 
 public class MusicController : AudioController
 {
+    public static MusicController Instance;
+    
     private GameObject _player;
     private HealthSystem _playerHealthSystem;
     private WaveSystem _waveSystem;
 
     private void Awake()
     {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        
+        Instance = this;
         DontDestroyOnLoad(gameObject);
     }
 
@@ -23,6 +32,13 @@ public class MusicController : AudioController
         switch (SceneManager.GetActiveScene().buildIndex)
         {
             case 0:
+                if (!audioSystem.SoundExists(audioLookup["mus_mainmenu"]))
+                {
+                    audioSystem.PlayGlobalAudio(audioLookup["mus_mainmenu"], AudioType.Music);
+                }
+
+                break;
+            case 1:
                 if (_playerHealthSystem && _playerHealthSystem.isDead &&
                     !audioSystem.SoundExists(audioLookup["mus_losescreen"]))
                 {
@@ -57,7 +73,7 @@ public class MusicController : AudioController
     {
         switch (scene.buildIndex)
         {
-            case 0:
+            case 1:
                 _player = GameObject.FindWithTag("Player");
                 _playerHealthSystem = _player.GetComponent<HealthSystem>();
                 _waveSystem = _player.GetComponent<WaveSystem>();
