@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
@@ -59,8 +60,14 @@ public class DeathManager : MonoBehaviour
 
     private void PlayerDeath()
     {
-        var resultText = GameObject.Find("UI").transform.Find("ResultsScreen").transform.Find("ResultText").GetComponent<TextMeshProUGUI>();
+        MainManager.Instance.PauseGame();
+        
+        var resultsScreen = Resources.FindObjectsOfTypeAll<Menu>().FirstOrDefault(item => item.name == "ResultsScreen");
+
+        if (resultsScreen is null) return;
+        
+        var resultText = resultsScreen.transform.Find("ResultText").GetComponent<TextMeshProUGUI>();
         resultText.text = "You Lose!";
-        Time.timeScale = 0f;
+        resultsScreen.gameObject.SetActive(true);
     }
 }

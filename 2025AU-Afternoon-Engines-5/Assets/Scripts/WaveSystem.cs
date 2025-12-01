@@ -21,14 +21,22 @@ public class WaveSystem : MonoBehaviour
     private bool _preparingWave;
     private Bounds _spawnBounds;
     private bool _waveActive;
+    private GameObject _resultsScreen;
     private TextMeshProUGUI _resultText;
     private PlayerInventory _playerInventory;
 
     private void Start()
     {
         _spawnBounds = GameObject.Find("Spawn Bounds").GetComponent<Collider>().bounds;
-        _resultText = GameObject.Find("UI").transform.Find("ResultsScreen").transform.Find("ResultText").GetComponent<TextMeshProUGUI>();
         _playerInventory = GetComponent<PlayerInventory>();
+
+        var resultsScreen = Resources.FindObjectsOfTypeAll<Menu>().FirstOrDefault(item => item.name == "ResultsScreen");
+
+        if (resultsScreen is not null)
+        {
+            _resultsScreen = resultsScreen.gameObject;
+            _resultText = resultsScreen.transform.Find("ResultText").GetComponent<TextMeshProUGUI>();
+        }
 
         StartWave();
     }
@@ -144,8 +152,9 @@ public class WaveSystem : MonoBehaviour
 
     private void ShowWinScreen()
     {
+        MainManager.Instance.PauseGame();
         _resultText.text = "You win!";
-        Time.timeScale = 0f;
+        _resultsScreen.SetActive(true);
     }
 
     /*private bool CheckForWin()

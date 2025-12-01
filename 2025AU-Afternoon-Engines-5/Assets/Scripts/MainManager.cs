@@ -1,4 +1,5 @@
 using System;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class MainManager : MonoBehaviour
@@ -33,9 +34,6 @@ public class MainManager : MonoBehaviour
     {
         if (paused) return;
 
-        var pauseMenu = FindFirstObjectByType<Menu>(FindObjectsInactive.Include);
-        
-        pauseMenu.gameObject.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         Time.timeScale = 0;

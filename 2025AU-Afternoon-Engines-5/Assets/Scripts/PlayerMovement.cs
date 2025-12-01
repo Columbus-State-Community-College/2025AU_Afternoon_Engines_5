@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -85,8 +86,17 @@ public class PlayerMovement : MonoBehaviour
         _verticalInput = Input.GetAxisRaw("Vertical");
 
         if (Input.GetButtonDown("Jump") && _grounded) { Jump(); }
-        
-        if (Input.GetButtonDown("Cancel") && !MainManager.Instance.paused) { MainManager.Instance.PauseGame(); }
+
+        if (Input.GetButtonDown("Cancel") && !MainManager.Instance.paused)
+        {
+            MainManager.Instance.PauseGame();
+            
+            var pauseMenu = Resources.FindObjectsOfTypeAll<Menu>().FirstOrDefault(item => item.name == "Pause Menu");
+
+            if (pauseMenu is null) return;
+            
+            pauseMenu.gameObject.SetActive(true);
+        }
     }
 
     private void MovePlayer()
