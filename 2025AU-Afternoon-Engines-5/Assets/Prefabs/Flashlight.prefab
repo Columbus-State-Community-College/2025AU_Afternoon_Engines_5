@@ -150,7 +150,7 @@ Transform:
   m_GameObject: {fileID: 8468485493646277253}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.534}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -196,7 +196,10 @@ MonoBehaviour:
   baseDamage: 7
   rangeModifier: 0.5
   angleModifier: 0.5
+  maxBattery: 100
+  batteryDrain: 0.5
   damaging: 0
+  battery: 100
 --- !u!114 &5798369240880918242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,8 +256,8 @@ Transform:
   m_GameObject: {fileID: 9172937434464443649}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.565, y: 0.00000011920929, z: -1.436}
-  m_LocalScale: {x: 0.112994924, y: 0.20541346, z: 0.112994924}
+  m_LocalPosition: {x: 0.565, y: 0.00000011920929, z: -0.831}
+  m_LocalScale: {x: 0.08, y: 0.14543198, z: 0.08}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 3224006047699705742}

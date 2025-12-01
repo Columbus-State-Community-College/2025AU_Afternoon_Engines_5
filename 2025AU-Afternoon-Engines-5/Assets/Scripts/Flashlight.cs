@@ -1,12 +1,15 @@
 using System;
 using UnityEngine;
 using UnityEngine.Animations;
+using UnityEngine.UI;
 
 public class Flashlight : MonoBehaviour
 {
     public float baseDamage = 2f;
     public float rangeModifier = 0.5f;
     public float angleModifier = 0.5f;
+    public float maxBattery = 100f;
+    public float batteryDrain = 0.1f;
 
     public bool damaging = false;
     
@@ -14,6 +17,10 @@ public class Flashlight : MonoBehaviour
     private ConstraintSource _constraintSource;
     
     private Light _lightSource;
+
+    private bool _isOn = true;
+
+    [HideInInspector] public float battery;
     
     private void Start()
     {
@@ -29,11 +36,41 @@ public class Flashlight : MonoBehaviour
         _parentConstraint.AddSource(_constraintSource);
         _parentConstraint.SetTranslationOffset(0, _parentConstraint.transform.position - _constraintSource.sourceTransform.position);
         _parentConstraint.constraintActive = true;
+        
+        battery = maxBattery;
+    }
+
+    private void Update()
+    {
+        if (battery <= 0f)
+        {
+            if (_isOn)
+            {
+                ToggleFlashlight();
+            }
+
+            return;
+        }
+        
+        if (Input.GetButtonDown("Fire1"))
+        {
+            ToggleFlashlight();
+        }
+
+        if (!_isOn) return;
+        
+        battery -= batteryDrain * Time.deltaTime;
     }
     
     private void LateUpdate()
     {
         DetectHits();
+    }
+
+    private void ToggleFlashlight()
+    {
+        _lightSource.enabled = !_lightSource.enabled;
+        _isOn = !_isOn;
     }
 
     private void DetectHits()
