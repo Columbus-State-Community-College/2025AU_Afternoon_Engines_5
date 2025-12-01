@@ -21,6 +21,7 @@ public class PlayerCollision : MonoBehaviour
 
     private void HandleCollision(Collision collision)
     {
+        if (MainManager.Instance.paused) return;
         if (!collision.gameObject.CompareTag("Enemy")) return;
         
         _healthSystem.TakeDamage(5f);

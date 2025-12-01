@@ -17,6 +17,8 @@ public class PlayerCamera : MonoBehaviour
 
     private void Update()
     {
+        if (MainManager.Instance.paused) return;
+        
         var mouseX = Input.GetAxisRaw("Mouse X") * MainManager.Instance.sensX;
         var mouseY = Input.GetAxisRaw("Mouse Y") * MainManager.Instance.sensY;
 

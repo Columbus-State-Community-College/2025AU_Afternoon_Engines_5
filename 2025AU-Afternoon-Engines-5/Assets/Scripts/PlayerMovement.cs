@@ -61,6 +61,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        if (MainManager.Instance.paused) return;
+        
         _grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f);
         
         GetInput();
@@ -83,6 +85,8 @@ public class PlayerMovement : MonoBehaviour
         _verticalInput = Input.GetAxisRaw("Vertical");
 
         if (Input.GetButtonDown("Jump") && _grounded) { Jump(); }
+        
+        if (Input.GetButtonDown("Cancel") && !MainManager.Instance.paused) { MainManager.Instance.PauseGame(); }
     }
 
     private void MovePlayer()
