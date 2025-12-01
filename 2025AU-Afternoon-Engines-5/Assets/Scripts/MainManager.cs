@@ -18,6 +18,12 @@ public class MainManager : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        
         Instance = this;
         DontDestroyOnLoad(gameObject);
         LoadSettings();
@@ -27,10 +33,11 @@ public class MainManager : MonoBehaviour
     {
         if (paused) return;
 
-        var pauseMenu = GameObject.Find("Pause Menu");
+        var pauseMenu = FindFirstObjectByType<Menu>(FindObjectsInactive.Include);
         
-        pauseMenu.SetActive(true);
+        pauseMenu.gameObject.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         Time.timeScale = 0;
         paused = true;
     }
@@ -40,6 +47,7 @@ public class MainManager : MonoBehaviour
         if (!paused) return;
         
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         Time.timeScale = 1;
         paused = false;
     }
