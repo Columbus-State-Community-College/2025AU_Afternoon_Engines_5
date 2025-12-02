@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 8899543492053438125}
   - component: {fileID: 365478765490742113}
   - component: {fileID: 6285214071242304464}
+  - component: {fileID: 4975018676262048522}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -134,8 +135,36 @@ MonoBehaviour:
     - {fileID: 5507489055903397467, guid: 2ffd5d6c6d6f01e4b94da81db1536370, type: 3}
     - {fileID: 2390867321168723843, guid: a029481c2392779409f50ba51365dc6e, type: 3}
     - {fileID: 4126995974043458280, guid: c5bbdca11486b4c408c6f0f837bceb51, type: 3}
-    enemyCounts: 010000000200000002000000
+    enemyCounts: 010000000400000001000000
+    maxSpawn: 6
+    continuous: 1
+  - enemies:
+    - {fileID: 5507489055903397467, guid: 2ffd5d6c6d6f01e4b94da81db1536370, type: 3}
+    - {fileID: 2390867321168723843, guid: a029481c2392779409f50ba51365dc6e, type: 3}
+    - {fileID: 4126995974043458280, guid: c5bbdca11486b4c408c6f0f837bceb51, type: 3}
+    enemyCounts: 010000000300000001000000
+    maxSpawn: 8
+    continuous: 1
+  - enemies:
+    - {fileID: 5507489055903397467, guid: 2ffd5d6c6d6f01e4b94da81db1536370, type: 3}
+    - {fileID: 2390867321168723843, guid: a029481c2392779409f50ba51365dc6e, type: 3}
+    - {fileID: 4126995974043458280, guid: c5bbdca11486b4c408c6f0f837bceb51, type: 3}
+    enemyCounts: 020000000200000001000000
     maxSpawn: 10
+    continuous: 1
+  - enemies:
+    - {fileID: 5507489055903397467, guid: 2ffd5d6c6d6f01e4b94da81db1536370, type: 3}
+    - {fileID: 2390867321168723843, guid: a029481c2392779409f50ba51365dc6e, type: 3}
+    - {fileID: 4126995974043458280, guid: c5bbdca11486b4c408c6f0f837bceb51, type: 3}
+    enemyCounts: 020000000100000001000000
+    maxSpawn: 12
+    continuous: 1
+  - enemies:
+    - {fileID: 5507489055903397467, guid: 2ffd5d6c6d6f01e4b94da81db1536370, type: 3}
+    - {fileID: 2390867321168723843, guid: a029481c2392779409f50ba51365dc6e, type: 3}
+    - {fileID: 4126995974043458280, guid: c5bbdca11486b4c408c6f0f837bceb51, type: 3}
+    enemyCounts: 030000000100000002000000
+    maxSpawn: 14
     continuous: 1
   currentWave: 0
   waveBreakTime: 30
@@ -257,6 +286,34 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 63003cae691c72a48a8f9902be1f7dfa, type: 3}
   - {fileID: 8300000, guid: 7e93573ee36008148ae17553feb37155, type: 3}
   - {fileID: 8300000, guid: 478a3342091863a41bed900dffb7ac4b, type: 3}
+--- !u!114 &4975018676262048522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141273933174162167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e51ebdb5f44eeb344bb66d163e52a759, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entries:
+  - item: {fileID: 11400000, guid: d296c8d8813aefc42985152546ee6e6d, type: 2}
+    pickupPrefab: {fileID: 6294129796171593359, guid: 98b6313470b2b1b40897c7af95a70adb, type: 3}
+    chance: 1
+    minAmount: 1
+    maxAmount: 1
+  spawnPoints: []
+  useArea: 1
+  areaSize: {x: 400, y: 200}
+  totalToSpawn: 3
+  allowRespawn: 1
+  respawnDelay: 30
+  dropHeight: 0.1
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &4507674434510207882
 GameObject:
   m_ObjectHideFlags: 0
