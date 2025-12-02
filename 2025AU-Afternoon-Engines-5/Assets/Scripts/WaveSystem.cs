@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -11,9 +12,8 @@ public class WaveSystem : MonoBehaviour
     public List<Wave> waves;
     public int currentWave = 0;
     public float waveBreakTime = 30f;
-    [HideInInspector] public float remainingBreakTime;
     [HideInInspector] public bool allWavesCompleted = false;
-    public string winCollectibleId;
+    public ItemDefinition winCollectibleDef;
     public int winCollectibleCount;
 
     private List<GameObject> _enemyList = new();
@@ -23,12 +23,17 @@ public class WaveSystem : MonoBehaviour
     private bool _waveActive;
     private GameObject _resultsScreen;
     private TextMeshProUGUI _resultText;
+    private TextMeshProUGUI _waveInfoText;
+    private TextMeshProUGUI _collectibleText;
     private PlayerInventory _playerInventory;
 
     private void Start()
     {
         _spawnBounds = GameObject.Find("Spawn Bounds").GetComponent<Collider>().bounds;
         _playerInventory = GetComponent<PlayerInventory>();
+        _playerInventory.pickupEvent.AddListener(OnItemPickup);
+        _waveInfoText = GameObject.Find("/UI/Wave Info").GetComponent<TextMeshProUGUI>();
+        _collectibleText = GameObject.Find("/UI/Doll Counter").GetComponent<TextMeshProUGUI>();
 
         var resultsScreen = Resources.FindObjectsOfTypeAll<Menu>().FirstOrDefault(item => item.name == "ResultsScreen");
 
@@ -64,6 +69,8 @@ public class WaveSystem : MonoBehaviour
         if (_waveActive) return;
 
         SpawnEnemies();
+        UpdateWaveInfo();
+        UpdateItemCounter();
         _preparingWave = false;
         _waveActive = true;
         _overflowEnemies = true;
@@ -72,11 +79,14 @@ public class WaveSystem : MonoBehaviour
     public void EndWave()
     {
         _waveActive = false;
-        remainingBreakTime = waveBreakTime;
         currentWave++;
         DestroyEnemies();
+        if (currentWave > waves.Count - 1)
+        {
+            allWavesCompleted = true;
+            return;
+        }
         StartCoroutine(WaveBreakCoroutine());
-        if (currentWave > waves.Count - 1) allWavesCompleted = true;
     }
 
     private IEnumerator WaveBreakCoroutine()
@@ -86,6 +96,7 @@ public class WaveSystem : MonoBehaviour
         while (timer < waveBreakTime)
         {
             timer += Time.deltaTime;
+            _waveInfoText.text = $"Next wave in {(int)(waveBreakTime - timer)}s";
             yield return null;
         }
 
@@ -171,12 +182,34 @@ public class WaveSystem : MonoBehaviour
     {
         foreach (var stack in _playerInventory.items)
         {
-            if (stack.def.id != winCollectibleId || stack.count < winCollectibleCount) continue;
-
+            if (stack.def.id != winCollectibleDef.id || stack.count < winCollectibleCount) continue;
+            
+            _playerInventory.items.Remove(stack);
             return true;
         }
 
         return false;
+    }
+
+    private void OnItemPickup()
+    {
+        foreach (var stack in _playerInventory.items)
+        {
+            if (stack.def.id != winCollectibleDef.id) continue;
+
+            UpdateItemCounter(stack);
+            return;
+        }
+    }
+
+    private void UpdateItemCounter([CanBeNull] PlayerInventory.Stack stack = null)
+    {
+        _collectibleText.text = stack is null ? $"0/{winCollectibleCount} {winCollectibleDef.displayName}s found" : $"{stack.count}/{winCollectibleCount} {winCollectibleDef}s found";
+    }
+
+    private void UpdateWaveInfo()
+    {
+        _waveInfoText.text = $"Wave {currentWave + 1}";
     }
 }
 

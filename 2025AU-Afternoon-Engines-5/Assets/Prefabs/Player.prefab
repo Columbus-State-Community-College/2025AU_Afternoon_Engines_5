@@ -136,12 +136,11 @@ MonoBehaviour:
     - {fileID: 4126995974043458280, guid: c5bbdca11486b4c408c6f0f837bceb51, type: 3}
     enemyCounts: 010000000200000002000000
     maxSpawn: 10
-    continuous: 0
+    continuous: 1
   currentWave: 0
   waveBreakTime: 30
-  remainingBreakTime: 0
   allWavesCompleted: 0
-  winCollectibleId: battery
+  winCollectibleDef: {fileID: 11400000, guid: d296c8d8813aefc42985152546ee6e6d, type: 2}
   winCollectibleCount: 3
 --- !u!114 &6325468315717368135
 MonoBehaviour:
