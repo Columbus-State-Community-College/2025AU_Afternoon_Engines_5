@@ -204,7 +204,7 @@ public class WaveSystem : MonoBehaviour
 
     private void UpdateItemCounter([CanBeNull] PlayerInventory.Stack stack = null)
     {
-        _collectibleText.text = stack is null ? $"0/{winCollectibleCount} {winCollectibleDef.displayName}s found" : $"{stack.count}/{winCollectibleCount} {winCollectibleDef}s found";
+        _collectibleText.text = stack is null ? $"0/{winCollectibleCount} {winCollectibleDef.displayName}s found" : $"{stack.count}/{winCollectibleCount} {winCollectibleDef.displayName}s found";
     }
 
     private void UpdateWaveInfo()
