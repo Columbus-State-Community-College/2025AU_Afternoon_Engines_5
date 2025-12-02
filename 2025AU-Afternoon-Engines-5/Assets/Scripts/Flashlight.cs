@@ -42,6 +42,8 @@ public class Flashlight : MonoBehaviour
 
     private void Update()
     {
+        if (MainManager.Instance.paused) return;
+        
         if (battery <= 0f)
         {
             if (_isOn)
