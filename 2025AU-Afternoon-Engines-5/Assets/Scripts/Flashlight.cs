@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 using UnityEngine.Animations;
-using UnityEngine.UI;
 
 public class Flashlight : MonoBehaviour
 {
@@ -77,6 +76,8 @@ public class Flashlight : MonoBehaviour
 
     private void DetectHits()
     {
+        if (!_isOn) return;
+        
         // We need to get the light cone's radius to make the sphere cast the correct size. Math, woohoo.
         var innerAngle = _lightSource.innerSpotAngle;
         var height = _lightSource.range / 8;  // Dividing by 8 here to get the flashlight range closer to how it appears.
