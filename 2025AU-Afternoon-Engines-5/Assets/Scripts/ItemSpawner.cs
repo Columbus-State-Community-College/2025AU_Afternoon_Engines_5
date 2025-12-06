@@ -1,6 +1,10 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Events;
+
+[System.Serializable]
+public class SpawnEvent : UnityEvent<GameObject> { }
 
 public class ItemSpawner : MonoBehaviour
 {
@@ -31,6 +35,8 @@ public class ItemSpawner : MonoBehaviour
     public float dropHeight = 0.1f;  // keep items slightly above ground
     public LayerMask groundMask = ~0;
 
+    public SpawnEvent onSpawn = new();
+
     void Start()
     {
         SpawnBatch(totalToSpawn);
@@ -59,6 +65,8 @@ public class ItemSpawner : MonoBehaviour
             pos = SnapToGround(pos, dropHeight);
 
             var go = Instantiate(entry.pickupPrefab, pos, Quaternion.identity);
+            
+            onSpawn.Invoke(go);
 
             // ensure the instance has the correct item & amount
             var p = go.GetComponent<Pickup>();
