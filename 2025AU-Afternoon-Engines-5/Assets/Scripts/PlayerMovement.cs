@@ -17,10 +17,10 @@ public class PlayerMovement : MonoBehaviour
     public float gravity;
     
     [Header("Energy")]
-    [HideInInspector] public float energy = 100f;
     public float energyRestoration = 1f;
     public float energyDrain = 1f;
     public float energyRestorationWaitTime = 2f;
+    [HideInInspector] public float energy = 100f;
 
     [Header("Ground Check")] 
     public float playerHeight;
