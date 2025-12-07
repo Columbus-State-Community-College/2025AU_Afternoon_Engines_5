@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     public float gravity;
     
     [Header("Energy")]
-    public float energy = 100f;
+    [HideInInspector] public float energy = 100f;
     public float energyRestoration = 1f;
     public float energyDrain = 1f;
     public float energyRestorationWaitTime = 2f;
