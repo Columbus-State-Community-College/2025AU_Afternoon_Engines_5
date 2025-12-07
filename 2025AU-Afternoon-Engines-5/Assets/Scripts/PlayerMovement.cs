@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -14,6 +15,12 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce;
 
     public float gravity;
+    
+    [Header("Energy")]
+    public float energy = 100f;
+    public float energyRestoration = 1f;
+    public float energyDrain = 1f;
+    public float energyRestorationWaitTime = 2f;
 
     [Header("Ground Check")] 
     public float playerHeight;
@@ -40,6 +47,9 @@ public class PlayerMovement : MonoBehaviour
     
     private RaycastHit _slopeHit;
     private bool _exitingSlope;
+
+    private float _noSprintTimer = 0f;
+    private bool _energyCoroutineActive = false;
 
     public enum MovementState
     {
@@ -69,7 +79,8 @@ public class PlayerMovement : MonoBehaviour
         GetInput();
         ControlSpeed();
         StateHandler();
-
+        HandleEnergy();
+        
         if (!_grounded) return;
 
         _rb.linearDamping = groundDrag;
@@ -162,7 +173,7 @@ public class PlayerMovement : MonoBehaviour
     {
         switch (_grounded)
         {
-            case true when Input.GetButton("Sprint"):
+            case true when Input.GetButton("Sprint") && energy > 0f:
                 playerState = MovementState.Sprinting;
                 _moveSpeed = sprintSpeed;
                 break;
@@ -174,7 +185,7 @@ public class PlayerMovement : MonoBehaviour
                 playerState = MovementState.Airborne;
                 break;
         }
-
+        
         if (_horizontalInput != 0 || _verticalInput != 0 || playerState == MovementState.Airborne) return;
         
         playerState = MovementState.Idle;
@@ -191,5 +202,39 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 GetSlopeMovementDirection()
     {
         return Vector3.ProjectOnPlane(_moveDirection, _slopeHit.normal).normalized;
+    }
+
+    private void HandleEnergy()
+    {
+        if (playerState == MovementState.Sprinting)
+        {
+            energy -= energyDrain * Time.deltaTime;
+            _noSprintTimer = 0f;
+        }
+        else
+        {
+            _noSprintTimer += Time.deltaTime;
+        }
+
+        if (!_energyCoroutineActive && _noSprintTimer >= energyRestorationWaitTime)
+        {
+            StartCoroutine(RestoreEnergyCoroutine());
+        }
+    }
+
+    private IEnumerator RestoreEnergyCoroutine()
+    {
+        _energyCoroutineActive = true;
+        
+        while (_noSprintTimer > energyRestorationWaitTime && energy < 100f)
+        {
+            energy += energyRestoration * Time.deltaTime;
+
+            if (energy > 100f) energy = 100f;
+
+            yield return null;
+        }
+
+        _energyCoroutineActive = false;
     }
 }

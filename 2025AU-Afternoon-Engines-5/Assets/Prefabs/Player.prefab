@@ -140,6 +140,10 @@ MonoBehaviour:
   airMultiplier: 0.4
   jumpForce: 12
   gravity: -25
+  energy: 100
+  energyRestoration: 8
+  energyDrain: 16
+  energyRestorationWaitTime: 2
   playerHeight: 2
   maxSlopeAngle: 50
   playerState: 0
