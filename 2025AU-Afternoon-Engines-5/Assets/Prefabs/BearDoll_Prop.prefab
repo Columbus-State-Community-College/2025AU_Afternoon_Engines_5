@@ -214,6 +214,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 94278a2b364e0144ab8040f2023e5078, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2606856919707782667}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 94278a2b364e0144ab8040f2023e5078, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2163844558542411014}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 94278a2b364e0144ab8040f2023e5078, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9173616588627965110}
   m_SourcePrefab: {fileID: 100100000, guid: 94278a2b364e0144ab8040f2023e5078, type: 3}
 --- !u!1 &6294129796171593359 stripped
 GameObject:
@@ -5103,6 +5109,35 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &2163844558542411014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6294129796171593359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db4b6c403aa64b4785d019fb213b35b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sourceAllocation: 3
+--- !u!114 &9173616588627965110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6294129796171593359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09982c7af89f38a459dd0aaeb9258b2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioTags:
+  - sfx_doll
+  audioClips:
+  - {fileID: 8300000, guid: 51ee041372fb0de4ab80b867b32ec5c4, type: 3}
 --- !u!4 &6634625919370800181 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 94278a2b364e0144ab8040f2023e5078, type: 3}
