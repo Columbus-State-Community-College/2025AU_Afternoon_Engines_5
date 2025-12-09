@@ -10,5 +10,6 @@ public class DollAudioController : AudioController
         _dollFinder = GameObject.FindWithTag("Player").GetComponent<DollFinder>();
         
         audioSystem.PlaySpatialAudio(audioLookup["sfx_doll"], AudioType.SoundEffect, _dollFinder.distortionDistance, true);
+        audioSystem.ModifyRolloff(audioLookup["sfx_doll"], AudioRolloffMode.Linear);
     }
 }
