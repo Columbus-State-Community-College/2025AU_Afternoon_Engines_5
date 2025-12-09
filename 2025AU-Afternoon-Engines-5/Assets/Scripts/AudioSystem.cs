@@ -189,6 +189,16 @@ public class AudioSystem : MonoBehaviour
         return false;
     }
 
+    public void ModifyRolloff(AudioClip audioClip, AudioRolloffMode mode)
+    {
+        foreach (var audioObject in _activeAudioObjects)
+        {
+            if (audioObject.audioSource.clip != audioClip) continue;
+            
+            audioObject.audioSource.rolloffMode = mode;
+        }
+    }
+
     private void UpdateVolume()
     {
         var sfxVolume = MainManager.Instance.sfxVolume / 100f;
