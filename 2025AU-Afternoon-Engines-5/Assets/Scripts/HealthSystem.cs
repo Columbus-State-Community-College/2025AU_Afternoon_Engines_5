@@ -37,6 +37,8 @@ public class HealthSystem : MonoBehaviour
         if (isDead) return;
         
         currentHealth += amount;
+        
+        if (currentHealth > maxHealth) currentHealth = maxHealth;
     }
 
     private IEnumerator InvulnerabilityTimerCoroutine()
