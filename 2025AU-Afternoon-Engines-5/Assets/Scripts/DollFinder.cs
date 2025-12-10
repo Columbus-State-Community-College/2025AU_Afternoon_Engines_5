@@ -27,7 +27,7 @@ public class DollFinder : MonoBehaviour
 
     private void Start()
     {
-        _itemSpawner = GetComponent<ItemSpawner>();
+        _itemSpawner = GameObject.Find("/Spawners/Doll Spawner").GetComponent<ItemSpawner>();
         _globalVolume = GameObject.Find("/Post Processing/Global Volume").GetComponent<Volume>();
         _volumeProfile = _globalVolume.profile;
         _volumeProfile.TryGet(out _colorAdjustments);
