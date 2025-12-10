@@ -15019,7 +15019,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entries:
   - item: {fileID: 11400000, guid: d296c8d8813aefc42985152546ee6e6d, type: 2}
-    pickupPrefab: {fileID: 0}
+    pickupPrefab: {fileID: 6294129796171593359, guid: 98b6313470b2b1b40897c7af95a70adb, type: 3}
     chance: 1
     minAmount: 1
     maxAmount: 1
