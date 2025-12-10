@@ -15033,6 +15033,11 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 4294967295
+  sampleTerrain: 1
+  emptyRadius: 1
+  spawnLayerMask:
+    serializedVersion: 2
+    m_Bits: 115
   onSpawn:
     m_PersistentCalls:
       m_Calls: []
@@ -142306,6 +142311,11 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 4294967295
+  sampleTerrain: 1
+  emptyRadius: 1
+  spawnLayerMask:
+    serializedVersion: 2
+    m_Bits: 115
   onSpawn:
     m_PersistentCalls:
       m_Calls: []
@@ -207859,6 +207869,11 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 4294967295
+  sampleTerrain: 1
+  emptyRadius: 1
+  spawnLayerMask:
+    serializedVersion: 2
+    m_Bits: 115
   onSpawn:
     m_PersistentCalls:
       m_Calls: []

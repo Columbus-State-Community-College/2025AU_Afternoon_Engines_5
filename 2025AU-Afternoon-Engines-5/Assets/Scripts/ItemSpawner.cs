@@ -34,6 +34,11 @@ public class ItemSpawner : MonoBehaviour
     [Header("Height")]
     public float dropHeight = 0.1f;  // keep items slightly above ground
     public LayerMask groundMask = ~0;
+    public bool sampleTerrain = true;
+
+    [Header("Spawn Permission")] 
+    public float emptyRadius = 1f;
+    public LayerMask spawnLayerMask;
 
     public SpawnEvent onSpawn = new();
 
@@ -56,14 +61,29 @@ public class ItemSpawner : MonoBehaviour
 
     void SpawnBatch(int count)
     {
+        var rerollPosition = true;
+        
         for (int i = 0; i < count; i++)
         {
             var entry = RollEntry();
             if (entry == null || entry.pickupPrefab == null) continue;
 
             Vector3 pos = useArea ? RandomPointInArea() : NextPointFromArray();
-            pos = SnapToGround(pos, dropHeight);
+            pos = sampleTerrain ? SnapToTerrain(pos, dropHeight) : SnapToGround(pos, dropHeight);
 
+            while (rerollPosition && useArea)
+            {
+                if (Physics.CheckSphere(pos, emptyRadius, spawnLayerMask))
+                {
+                    pos = useArea ? RandomPointInArea() : NextPointFromArray();
+                    pos = sampleTerrain ? SnapToTerrain(pos, dropHeight) : SnapToGround(pos, dropHeight);
+                }
+                else
+                {
+                    rerollPosition = false;
+                }
+            }
+            
             var go = Instantiate(entry.pickupPrefab, pos, Quaternion.identity);
             
             onSpawn.Invoke(go);
@@ -117,6 +137,15 @@ public class ItemSpawner : MonoBehaviour
         if (Physics.Raycast(pos + Vector3.up * 5f, Vector3.down, out var hit, 20f, groundMask))
             return hit.point + Vector3.up * offset;
 
+        return pos + Vector3.up * offset;
+    }
+
+    Vector3 SnapToTerrain(Vector3 pos, float offset)
+    {
+        var offsetY = Terrain.activeTerrain.SampleHeight(pos);
+        
+        pos.y = offsetY;
+        
         return pos + Vector3.up * offset;
     }
 
