@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 957159039894268412}
   - component: {fileID: 5657071181779565210}
   - component: {fileID: 4217832090449730836}
+  - component: {fileID: -69891853691915999}
   m_Layer: 0
   m_Name: Battery
   m_TagString: Untagged
@@ -157,3 +158,17 @@ MonoBehaviour:
   interactKey: 101
   playerTag: Player
   promptUI: {fileID: 0}
+--- !u!114 &-69891853691915999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4711567007973997856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a95c7a9e983e8d45a060d79cf7d8d00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rechargeAmount: 25
+  playerTag: Player
