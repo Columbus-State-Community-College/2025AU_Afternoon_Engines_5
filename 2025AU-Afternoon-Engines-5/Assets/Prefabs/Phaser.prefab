@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 6645502120499851764}
   - component: {fileID: 121359719783166122}
   - component: {fileID: 1435710056392709282}
+  - component: {fileID: 7502619968824565160}
   m_Layer: 0
   m_Name: Phaser
   m_TagString: Enemy
@@ -156,6 +157,7 @@ MonoBehaviour:
   hoverHeight: 1.5
   playerTag: Player
   detectRadius: 10
+  playerViewFov: 90
   agent: {fileID: 0}
   wanderRadius: 10
   changeDirectionInterval: 4
@@ -174,6 +176,7 @@ MonoBehaviour:
   hoverHeight: 1.5
   playerTag: Player
   detectRadius: 10
+  playerViewFov: 90
   agent: {fileID: 0}
   fleeTriggerDistance: 6
   fleeBurstDistance: 8
@@ -192,6 +195,7 @@ MonoBehaviour:
   hoverHeight: 1.5
   playerTag: Player
   detectRadius: 6
+  playerViewFov: 90
   agent: {fileID: 0}
 --- !u!114 &3355399274629254019
 MonoBehaviour:
@@ -235,7 +239,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7db4b6c403aa64b4785d019fb213b35b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sourceAllocation: 3
 --- !u!114 &6645502120499851764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,6 +279,7 @@ MonoBehaviour:
   damageRadius: 1
   damageCooldown: 1
   playerTag: Player
+  playerViewFov: 90
 --- !u!114 &1435710056392709282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,3 +301,22 @@ MonoBehaviour:
   teleportRadius: 5
   teleportNearPlayer: 1
   teleportNearPlayerRadius: 8
+--- !u!114 &7502619968824565160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4581640378607039679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96f1774ff29649143bfb5baf6ee7053e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverHeight: 1.5
+  playerTag: Player
+  detectRadius: 10
+  playerViewFov: 90
+  agent: {fileID: 0}
+  chaseRadius: 10
+  stopDistance: 0.5

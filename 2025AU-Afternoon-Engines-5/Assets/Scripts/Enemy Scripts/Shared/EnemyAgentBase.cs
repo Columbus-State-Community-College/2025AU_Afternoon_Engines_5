@@ -10,22 +10,32 @@ public class EnemyAgentBase : MonoBehaviour
 
     [Header("Perception")]
     public float detectRadius = 10f;
+    [Tooltip("Approximate field of view angle of the player's vision, used to check if they are looking at this enemy.")]
+    public float playerViewFov = 90f;
 
-    public NavMeshAgent agent;
+    [HideInInspector] public NavMeshAgent agent;
+
     protected Transform player;
+    protected Transform playerView;   
     protected float timer;
 
     protected virtual void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
-        agent.updateUpAxis = false; // keeps movement planar
+        agent.updateUpAxis = false; // keeps movement planar for floaty ghosts
     }
 
     protected virtual void Start()
     {
         GameObject p = GameObject.FindGameObjectWithTag(playerTag);
         if (p) player = p.transform;
+
+        if (Camera.main != null)
+            playerView = Camera.main.transform;
+        else
+            playerView = player;
+
         MaintainHoverHeight();
     }
 
@@ -43,13 +53,27 @@ public class EnemyAgentBase : MonoBehaviour
     protected void SetDestinationIfOnNavMesh(Vector3 worldPos, float sampleRadius = 4f)
     {
         if (NavMesh.SamplePosition(worldPos, out var hit, sampleRadius, NavMesh.AllAreas))
+        {
             agent.SetDestination(hit.position);
+        }
     }
 
     protected void MaintainHoverHeight()
     {
-        var pos = transform.position;
+        Vector3 pos = transform.position;
         pos.y = hoverHeight;
         transform.position = pos;
+    }
+
+    
+    protected bool IsPlayerLookingAtMe()
+    {
+        if (!playerView) return false;
+
+        Vector3 toEnemy = (transform.position - playerView.position).normalized;
+        float dot = Vector3.Dot(playerView.forward, toEnemy);
+        float cosHalfFov = Mathf.Cos(playerViewFov * 0.5f * Mathf.Deg2Rad);
+
+        return dot >= cosHalfFov;
     }
 }

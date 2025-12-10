@@ -153,6 +153,7 @@ MonoBehaviour:
   hoverHeight: 1.5
   playerTag: Player
   detectRadius: 10
+  playerViewFov: 90
   agent: {fileID: 0}
   state: 1
   patrolRadius: 15
@@ -176,6 +177,7 @@ MonoBehaviour:
   hoverHeight: 1.5
   playerTag: Player
   detectRadius: 12
+  playerViewFov: 90
   agent: {fileID: 0}
 --- !u!114 &7190413142306958141
 MonoBehaviour:
@@ -206,7 +208,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7db4b6c403aa64b4785d019fb213b35b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sourceAllocation: 3
 --- !u!114 &1143801261781133257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,6 +247,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageAmount: 15
-  damageRadius: 2
+  damageRadius: 3
   damageCooldown: 1.5
   playerTag: Player
+  playerViewFov: 90
+  OnHitPlayer:
+    m_PersistentCalls:
+      m_Calls: []

@@ -22,6 +22,8 @@ GameObject:
   - component: {fileID: 7392689344533519988}
   - component: {fileID: 1119052041111532104}
   - component: {fileID: -5130317495215806645}
+  - component: {fileID: 4713609917545046933}
+  - component: {fileID: 3096824846075885275}
   m_Layer: 0
   m_Name: Speedster
   m_TagString: Enemy
@@ -155,6 +157,7 @@ MonoBehaviour:
   hoverHeight: 1.5
   playerTag: Player
   detectRadius: 10
+  playerViewFov: 90
   agent: {fileID: 0}
   wanderRadius: 10
   changeDirectionInterval: 4
@@ -173,6 +176,7 @@ MonoBehaviour:
   hoverHeight: 1.5
   playerTag: Player
   detectRadius: 10
+  playerViewFov: 90
   agent: {fileID: 0}
   fleeTriggerDistance: 6
   fleeBurstDistance: 8
@@ -191,6 +195,7 @@ MonoBehaviour:
   hoverHeight: 1.5
   playerTag: Player
   detectRadius: 6
+  playerViewFov: 90
   agent: {fileID: 0}
 --- !u!114 &690207022441394666
 MonoBehaviour:
@@ -248,7 +253,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7db4b6c403aa64b4785d019fb213b35b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sourceAllocation: 3
 --- !u!114 &1119052041111532104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,3 +293,51 @@ MonoBehaviour:
   damageRadius: 1.25
   damageCooldown: 0.8
   playerTag: Player
+  playerViewFov: 90
+  OnHitPlayer:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3096824846075885275}
+        m_TargetAssemblyTypeName: SpeedsterOnHit, Assembly-CSharp
+        m_MethodName: DrainStamina
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4713609917545046933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4126995974043458280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96f1774ff29649143bfb5baf6ee7053e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverHeight: 1.5
+  playerTag: Player
+  detectRadius: 10
+  playerViewFov: 90
+  agent: {fileID: 0}
+  chaseRadius: 10
+  stopDistance: 0.5
+--- !u!114 &3096824846075885275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4126995974043458280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cad8500ba44cbc8428375e8c155985ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  staminaDrain: 25
