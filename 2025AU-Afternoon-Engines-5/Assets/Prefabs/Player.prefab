@@ -140,6 +140,10 @@ MonoBehaviour:
   airMultiplier: 0.4
   jumpForce: 12
   gravity: -25
+  energy: 100
+  energyRestoration: 8
+  energyDrain: 16
+  energyRestorationWaitTime: 2
   playerHeight: 2
   maxSlopeAngle: 50
   playerState: 0
@@ -540,6 +544,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7719796618797401851}
     m_Modifications:
+    - target: {fileID: 1777076608573915631, guid: b4a2dec3a67a32f4ea80cd261c08f767, type: 3}
+      propertyPath: m_Color.b
+      value: 0.8306657
+      objectReference: {fileID: 0}
+    - target: {fileID: 1777076608573915631, guid: b4a2dec3a67a32f4ea80cd261c08f767, type: 3}
+      propertyPath: m_Color.g
+      value: 0.9490359
+      objectReference: {fileID: 0}
+    - target: {fileID: 1777076608573915631, guid: b4a2dec3a67a32f4ea80cd261c08f767, type: 3}
+      propertyPath: m_Color.r
+      value: 0.98490566
+      objectReference: {fileID: 0}
+    - target: {fileID: 1777076608573915631, guid: b4a2dec3a67a32f4ea80cd261c08f767, type: 3}
+      propertyPath: m_Intensity
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3224006047699705742, guid: b4a2dec3a67a32f4ea80cd261c08f767, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

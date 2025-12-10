@@ -5,10 +5,7 @@ using UnityEngine.Rendering;
 
 public class AudioSystem : MonoBehaviour
 {
-    public int sourceAllocation = 3;
-    
     private List<AudioObject> _activeAudioObjects = new();
-    private List<AudioSource> _audioSources = new();
     private bool _globalPause = false;
     private int _lastMusicVolume;
     private int _lastSfxVolume;
@@ -17,13 +14,6 @@ public class AudioSystem : MonoBehaviour
     {
         _lastMusicVolume = MainManager.Instance.musicVolume;
         _lastSfxVolume = MainManager.Instance.sfxVolume;
-
-        /*for (var i = 0; i < sourceAllocation; i++)
-        {
-            var audioSource = gameObject.AddComponent<AudioSource>();
-            audioSource.enabled = false;
-            _audioSources.Add(audioSource);
-        }*/
     }
 
     private void Update()
@@ -199,6 +189,16 @@ public class AudioSystem : MonoBehaviour
         return false;
     }
 
+    public void ModifyRolloff(AudioClip audioClip, AudioRolloffMode mode)
+    {
+        foreach (var audioObject in _activeAudioObjects)
+        {
+            if (audioObject.audioSource.clip != audioClip) continue;
+            
+            audioObject.audioSource.rolloffMode = mode;
+        }
+    }
+
     private void UpdateVolume()
     {
         var sfxVolume = MainManager.Instance.sfxVolume / 100f;
@@ -222,19 +222,6 @@ public class AudioSystem : MonoBehaviour
                     break;
             }
         }
-    }
-
-    private AudioSource FindAvailableAudioSource()
-    {
-        foreach (var audioSource in _audioSources)
-        {
-            if (audioSource.isActiveAndEnabled) continue;
-            
-            audioSource.enabled = true;
-            return audioSource;
-        }
-        
-        return null;
     }
     
     private IEnumerator FadeOutSoundCoroutine(AudioSource audioSource, float fadeTime)

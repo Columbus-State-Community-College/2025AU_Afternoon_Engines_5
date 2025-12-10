@@ -136,7 +136,7 @@ Material:
     - _Surface: 0
     - _TextureResolution: 400
     - _UsePixelation: 1
-    - _VertexResolution: 55
+    - _VertexResolution: 64
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
