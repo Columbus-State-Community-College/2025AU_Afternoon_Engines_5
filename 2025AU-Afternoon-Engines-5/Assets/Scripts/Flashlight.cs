@@ -121,4 +121,11 @@ public class Flashlight : MonoBehaviour
         
         targetHealthComponent.TakeDamage(damage);
     }
+
+    public void GiveBattery(float amount)
+    {
+        battery += amount;
+        
+        if (battery > maxBattery) battery = maxBattery;
+    }
 }
