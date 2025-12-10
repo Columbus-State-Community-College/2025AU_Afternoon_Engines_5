@@ -197,7 +197,7 @@ MonoBehaviour:
     maxSpawn: 14
     continuous: 1
   currentWave: 0
-  waveBreakTime: 30
+  waveBreakTime: 5
   allWavesCompleted: 0
   winCollectibleDef: {fileID: 11400000, guid: d296c8d8813aefc42985152546ee6e6d, type: 2}
   winCollectibleCount: 3
