@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 8899543492053438125}
   - component: {fileID: 365478765490742113}
   - component: {fileID: 6285214071242304464}
-  - component: {fileID: 4975018676262048522}
   - component: {fileID: 6069613643145998903}
   m_Layer: 0
   m_Name: Player
@@ -140,10 +139,10 @@ MonoBehaviour:
   airMultiplier: 0.4
   jumpForce: 12
   gravity: -25
-  energy: 100
   energyRestoration: 8
   energyDrain: 16
   energyRestorationWaitTime: 2
+  energy: 100
   playerHeight: 2
   maxSlopeAngle: 50
   playerState: 0
@@ -290,7 +289,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7db4b6c403aa64b4785d019fb213b35b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sourceAllocation: 3
 --- !u!114 &6285214071242304464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -317,37 +315,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 63003cae691c72a48a8f9902be1f7dfa, type: 3}
   - {fileID: 8300000, guid: 7e93573ee36008148ae17553feb37155, type: 3}
   - {fileID: 8300000, guid: 478a3342091863a41bed900dffb7ac4b, type: 3}
---- !u!114 &4975018676262048522
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1141273933174162167}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e51ebdb5f44eeb344bb66d163e52a759, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entries:
-  - item: {fileID: 11400000, guid: d296c8d8813aefc42985152546ee6e6d, type: 2}
-    pickupPrefab: {fileID: 6294129796171593359, guid: 98b6313470b2b1b40897c7af95a70adb, type: 3}
-    chance: 1
-    minAmount: 1
-    maxAmount: 1
-  spawnPoints: []
-  useArea: 1
-  areaSize: {x: 400, y: 200}
-  totalToSpawn: 3
-  allowRespawn: 1
-  respawnDelay: 30
-  dropHeight: 0.1
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  onSpawn:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &6069613643145998903
 MonoBehaviour:
   m_ObjectHideFlags: 0
