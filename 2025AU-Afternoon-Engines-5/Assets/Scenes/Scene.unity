@@ -6168,7 +6168,7 @@ Transform:
   m_GameObject: {fileID: 112593511}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 26, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6194,7 +6194,7 @@ MonoBehaviour:
     maxAmount: 1
   spawnPoints: []
   useArea: 1
-  areaSize: {x: 300, y: 80}
+  areaSize: {x: 175, y: 60}
   totalToSpawn: 3
   allowRespawn: 1
   respawnDelay: 30
@@ -58862,7 +58862,7 @@ Transform:
   m_GameObject: {fileID: 1265810932}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 26, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -58888,7 +58888,7 @@ MonoBehaviour:
     maxAmount: 1
   spawnPoints: []
   useArea: 1
-  areaSize: {x: 300, y: 80}
+  areaSize: {x: 175, y: 60}
   totalToSpawn: 2
   allowRespawn: 1
   respawnDelay: 60
@@ -86352,7 +86352,7 @@ Transform:
   m_GameObject: {fileID: 1872875405}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 26, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -86378,7 +86378,7 @@ MonoBehaviour:
     maxAmount: 1
   spawnPoints: []
   useArea: 1
-  areaSize: {x: 300, y: 80}
+  areaSize: {x: 175, y: 60}
   totalToSpawn: 2
   allowRespawn: 1
   respawnDelay: 60
@@ -86435,7 +86435,7 @@ Transform:
   m_GameObject: {fileID: 1875927738}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 54.5, y: 0, z: 0.0000011921}
+  m_LocalPosition: {x: 26, y: 0, z: 0.0000011921}
   m_LocalScale: {x: 327.3327, y: 10, z: 130.588}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -86460,8 +86460,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 0.5, z: 1}
-  m_Center: {x: 0, y: -0.24413534, z: 0}
+  m_Size: {x: 0.55, y: 0.5, z: 0.5}
+  m_Center: {x: 0, y: -0.2, z: 0}
 --- !u!4 &1877848530 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7789980444431354584, guid: 6b67d2ff25526124798d31a1c2397df0, type: 3}

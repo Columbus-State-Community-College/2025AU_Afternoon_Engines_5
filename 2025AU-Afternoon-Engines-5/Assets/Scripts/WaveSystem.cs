@@ -29,7 +29,7 @@ public class WaveSystem : MonoBehaviour
 
     private void Start()
     {
-        _spawnBounds = GameObject.Find("Spawn Bounds").GetComponent<Collider>().bounds;
+        _spawnBounds = GameObject.Find("/Environment/Spawn Bounds").GetComponent<Collider>().bounds;
         _playerInventory = GetComponent<PlayerInventory>();
         _playerInventory.pickupEvent.AddListener(OnItemPickup);
         _waveInfoText = GameObject.Find("/UI/Wave Info").GetComponent<TextMeshProUGUI>();
@@ -167,16 +167,6 @@ public class WaveSystem : MonoBehaviour
         _resultText.text = "You win!";
         _resultsScreen.SetActive(true);
     }
-
-    /*private bool CheckForWin()
-    {
-        foreach (var enemy in _enemyList)
-        {
-            if (!enemy.name.Contains("Reaper")) return false;
-        }
-
-        return true;
-    }*/
 
     private bool CheckForWin()
     {
