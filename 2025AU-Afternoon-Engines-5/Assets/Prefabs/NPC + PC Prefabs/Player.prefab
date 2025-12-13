@@ -331,6 +331,9 @@ MonoBehaviour:
   restorationTime: 1
   postExposureTarget: -2
   chromaticAberrationTarget: 1
+  useTint: 1
+  tintColor: {r: 0.41, g: 0, b: 0, a: 0}
+  tintTarget: 0.05
 --- !u!1 &4507674434510207882
 GameObject:
   m_ObjectHideFlags: 0
