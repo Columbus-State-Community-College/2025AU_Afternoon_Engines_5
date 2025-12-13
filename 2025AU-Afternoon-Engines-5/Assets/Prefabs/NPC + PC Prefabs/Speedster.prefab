@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: -5130317495215806645}
   - component: {fileID: 4713609917545046933}
   - component: {fileID: 3096824846075885275}
+  - component: {fileID: 3520258772544440968}
   m_Layer: 0
   m_Name: Speedster
   m_TagString: Enemy
@@ -341,3 +342,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   staminaDrain: 25
+--- !u!114 &3520258772544440968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4126995974043458280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d340dbadcf82a4746990bb1549f14898, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBarCanvas: {fileID: 4329626665544919395, guid: 72af0f44e4c77324abde459f0c2db4a3, type: 3}
+  visibleDistance: 5
+  yValue: 1
