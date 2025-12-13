@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 1435710056392709282}
   - component: {fileID: 7502619968824565160}
   - component: {fileID: 7466021115402977537}
+  - component: {fileID: -8466149844074794903}
   m_Layer: 0
   m_Name: Phaser
   m_TagString: Enemy
@@ -305,6 +306,12 @@ MonoBehaviour:
   teleportRadius: 5
   teleportNearPlayer: 1
   teleportNearPlayerRadius: 8
+  phaseOutEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  phaseInEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &7502619968824565160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -339,3 +346,22 @@ MonoBehaviour:
   healthBarCanvas: {fileID: 4329626665544919395, guid: 72af0f44e4c77324abde459f0c2db4a3, type: 3}
   visibleDistance: 5
   yValue: 1
+--- !u!114 &-8466149844074794903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4581640378607039679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f1ec78d56e271545bd02259383efe01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioTags:
+  - sfx_phase_out
+  - sfx_phase_in
+  audioClips:
+  - {fileID: 8300000, guid: 7f92e08ab3e4c2c4a94f5acad3a4489b, type: 3}
+  - {fileID: 8300000, guid: 90983fea23146ba45a30fd93826d8847, type: 3}
+  phaseSfxDistance: 10

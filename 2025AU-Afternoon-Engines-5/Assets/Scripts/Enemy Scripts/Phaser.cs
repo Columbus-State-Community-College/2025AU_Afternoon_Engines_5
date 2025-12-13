@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
 public class PhaserGhost : MonoBehaviour
 {
@@ -16,6 +17,9 @@ public class PhaserGhost : MonoBehaviour
     public bool teleportNearPlayer = false;
     public float teleportNearPlayerRadius = 8f;
 
+    [HideInInspector] public UnityEvent phaseOutEvent = new();
+    [HideInInspector] public UnityEvent phaseInEvent = new();
+    
     private Transform _player;
     private float _nextPhaseTime;
     private bool _isPhasing = false;
@@ -54,6 +58,8 @@ public class PhaserGhost : MonoBehaviour
         agent.isStopped = true;
 
         SetVisible(false);
+        
+        phaseOutEvent.Invoke();
 
         float t = 0f;
         while (t < phaseDuration)
@@ -75,6 +81,8 @@ public class PhaserGhost : MonoBehaviour
 
         _isPhasing = false;
         ScheduleNextPhase();
+        
+        phaseInEvent.Invoke();
     }
 
     Vector3 ChooseTeleportPosition()
