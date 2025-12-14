@@ -1944,6 +1944,24 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2259348927385652737, guid: 6e4cc17feec6b8f41aa7275a3026c2c5, type: 3}
+      propertyPath: m_text
+      value: 'Movement: W, A, S, D
+
+        Jump: Space
+
+        Sprint: Shift (Hold)
+
+        E:
+        Interact
+
+        Look: Mouse Movement
+
+        Toggle Flashlight: Left Click
+
+        Pause:
+        Escape'
+      objectReference: {fileID: 0}
     - target: {fileID: 3191621132999612038, guid: 6e4cc17feec6b8f41aa7275a3026c2c5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
