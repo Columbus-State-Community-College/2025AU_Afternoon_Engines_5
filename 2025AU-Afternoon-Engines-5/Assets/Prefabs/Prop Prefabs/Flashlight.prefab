@@ -44,9 +44,9 @@ Light:
   serializedVersion: 11
   m_Type: 0
   m_Color: {r: 0.9435011, g: 0.98490566, b: 0.86783195, a: 1}
-  m_Intensity: 4
+  m_Intensity: 30
   m_Range: 7
-  m_SpotAngle: 35
+  m_SpotAngle: 45
   m_InnerSpotAngle: 25
   m_CookieSize: 10
   m_Shadows:
@@ -197,7 +197,7 @@ MonoBehaviour:
   rangeModifier: 0.5
   angleModifier: 0.5
   maxBattery: 100
-  batteryDrain: 0.5
+  batteryDrain: 1.5
   damaging: 0
   battery: 100
 --- !u!114 &5798369240880918242
@@ -212,7 +212,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7db4b6c403aa64b4785d019fb213b35b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sourceAllocation: 3
 --- !u!114 &2854595694331717223
 MonoBehaviour:
   m_ObjectHideFlags: 0

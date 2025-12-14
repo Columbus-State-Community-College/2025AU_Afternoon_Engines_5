@@ -6203,7 +6203,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   sampleTerrain: 1
-  emptyRadius: 1
+  emptyRadius: 3
   spawnLayerMask:
     serializedVersion: 2
     m_Bits: 115
@@ -58830,7 +58830,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   sampleTerrain: 1
-  emptyRadius: 1
+  emptyRadius: 3
   spawnLayerMask:
     serializedVersion: 2
     m_Bits: 115
@@ -86286,7 +86286,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   sampleTerrain: 1
-  emptyRadius: 1
+  emptyRadius: 3
   spawnLayerMask:
     serializedVersion: 2
     m_Bits: 115
