@@ -331,6 +331,9 @@ MonoBehaviour:
   restorationTime: 1
   postExposureTarget: -2
   chromaticAberrationTarget: 1
+  useTint: 1
+  tintColor: {r: 0.41, g: 0, b: 0, a: 0}
+  tintTarget: 0.05
 --- !u!1 &4507674434510207882
 GameObject:
   m_ObjectHideFlags: 0
@@ -525,7 +528,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1777076608573915631, guid: b4a2dec3a67a32f4ea80cd261c08f767, type: 3}
       propertyPath: m_Intensity
-      value: 10
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3224006047699705742, guid: b4a2dec3a67a32f4ea80cd261c08f767, type: 3}
       propertyPath: m_LocalPosition.x

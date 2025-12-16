@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.UI;
 
 public class DollFinder : MonoBehaviour
 {
@@ -10,7 +11,9 @@ public class DollFinder : MonoBehaviour
     public float restorationTime = 1f;
     public float postExposureTarget = -1f;
     public float chromaticAberrationTarget = 1f;
-    
+    public bool useTint = false;
+    public Color tintColor = new(0.41f, 0f, 0f, 0f);
+    public float tintTarget = 0.25f;
     
     private ItemSpawner _itemSpawner;
     private List<GameObject> _dolls = new();
@@ -23,12 +26,17 @@ public class DollFinder : MonoBehaviour
     private float _origChromaticAberration;
     private float _currentPostExposure;
     private float _currentChromaticAberration;
+    private float _origTint;
+    private float _currentTint;
+
+    private Image _tintImage;
     
 
     private void Start()
     {
         _itemSpawner = GameObject.Find("/Spawners/Doll Spawner").GetComponent<ItemSpawner>();
         _globalVolume = GameObject.Find("/Post Processing/Global Volume").GetComponent<Volume>();
+        _tintImage = GameObject.Find("/UI/Tint").GetComponent<Image>();
         _volumeProfile = _globalVolume.profile;
         _volumeProfile.TryGet(out _colorAdjustments);
         _volumeProfile.TryGet(out _chromaticAberration);
@@ -84,6 +92,12 @@ public class DollFinder : MonoBehaviour
         
         _colorAdjustments.postExposure.value = _currentPostExposure;
         _chromaticAberration.intensity.value = _currentChromaticAberration;
+
+        if (!useTint) return;
+        
+        _currentTint = Mathf.Lerp(tintTarget, _origTint, distance / distortionDistance);
+        tintColor.a = _currentTint;
+        _tintImage.color = tintColor;
     }
 
     private IEnumerator RestoreVisionCoroutine()
@@ -95,6 +109,12 @@ public class DollFinder : MonoBehaviour
             timer += Time.deltaTime;
             _colorAdjustments.postExposure.value = Mathf.Lerp(_currentPostExposure, _origPostExposure, timer / restorationTime);
             _chromaticAberration.intensity.value = Mathf.Lerp(_currentPostExposure, _origPostExposure, timer / restorationTime);
+
+            if (useTint)
+            {
+                tintColor.a = Mathf.Lerp(_currentTint, _origTint, timer / restorationTime);
+                _tintImage.color = tintColor;
+            }
             
             yield return null;
         }
@@ -103,5 +123,10 @@ public class DollFinder : MonoBehaviour
         _chromaticAberration.intensity.value = _origChromaticAberration;
         _currentPostExposure = _origPostExposure;
         _currentChromaticAberration = _origChromaticAberration;
+
+        if (!useTint) yield break;
+        
+        tintColor.a = _origTint;
+        _tintImage.color = tintColor;
     }
 }

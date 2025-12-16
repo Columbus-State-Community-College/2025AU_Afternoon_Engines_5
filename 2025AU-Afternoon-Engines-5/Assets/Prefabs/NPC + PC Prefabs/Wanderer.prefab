@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 2396016477971401923}
   - component: {fileID: 7376730603761229452}
   - component: {fileID: 6224212152093660788}
+  - component: {fileID: -4481036047894316021}
   m_Layer: 0
   m_Name: Wanderer
   m_TagString: Enemy
@@ -279,6 +280,9 @@ MonoBehaviour:
   damageCooldown: 1
   playerTag: Player
   playerViewFov: 90
+  OnHitPlayer:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &6224212152093660788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -298,3 +302,18 @@ MonoBehaviour:
   agent: {fileID: 0}
   chaseRadius: 10
   stopDistance: 0.5
+--- !u!114 &-4481036047894316021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2390867321168723843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d340dbadcf82a4746990bb1549f14898, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBarCanvas: {fileID: 4329626665544919395, guid: 72af0f44e4c77324abde459f0c2db4a3, type: 3}
+  visibleDistance: 5
+  yValue: 1

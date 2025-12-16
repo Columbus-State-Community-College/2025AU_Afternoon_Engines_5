@@ -72,6 +72,7 @@ public class Flashlight : MonoBehaviour
     {
         _lightSource.enabled = !_lightSource.enabled;
         _isOn = !_isOn;
+        damaging = false;
     }
 
     private void DetectHits()
