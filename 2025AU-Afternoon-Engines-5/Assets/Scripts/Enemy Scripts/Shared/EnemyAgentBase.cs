@@ -22,8 +22,8 @@ public class EnemyAgentBase : MonoBehaviour
     protected virtual void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-        agent.updateRotation = false;
-        agent.updateUpAxis = false; // keeps movement planar for floaty ghosts
+        agent.updateRotation = true;
+        agent.updateUpAxis = false; 
     }
 
     protected virtual void Start()

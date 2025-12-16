@@ -131,12 +131,12 @@ NavMeshAgent:
   m_GameObject: {fileID: 4581640378607039679}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.65
-  m_Speed: 2
+  m_Radius: 1
+  m_Speed: 5
   m_Acceleration: 5
   avoidancePriority: 50
   m_AngularSpeed: 100
-  m_StoppingDistance: 0
+  m_StoppingDistance: 0.75
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
   m_AutoRepath: 1
@@ -277,7 +277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7807a1201aa812b469c847e1be8cc5f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 5
+  damageAmount: 3.5
   damageRadius: 1
   damageCooldown: 1
   playerTag: Player
@@ -300,8 +300,8 @@ MonoBehaviour:
   agent: {fileID: 7123308890214093616}
   renderers: []
   playerTag: Player
-  minPhaseInterval: 3
-  maxPhaseInterval: 7
+  minPhaseInterval: 4
+  maxPhaseInterval: 10
   phaseDuration: 0.5
   teleportRadius: 5
   teleportNearPlayer: 1
