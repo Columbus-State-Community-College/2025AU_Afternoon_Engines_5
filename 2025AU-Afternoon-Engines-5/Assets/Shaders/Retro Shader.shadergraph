@@ -32,12 +32,6 @@
         },
         {
             "m_Id": "d96779e846b9450e8642187fa11f1472"
-        },
-        {
-            "m_Id": "f1c2a16271b44013ae84e8a53c7da848"
-        },
-        {
-            "m_Id": "892d948772664a01986deb8b83d7c156"
         }
     ],
     "m_Keywords": [],
@@ -833,12 +827,6 @@
         },
         {
             "m_Id": "316412bdadc04c9389c397ab2e2c6298"
-        },
-        {
-            "m_Id": "f1c2a16271b44013ae84e8a53c7da848"
-        },
-        {
-            "m_Id": "892d948772664a01986deb8b83d7c156"
         }
     ]
 }
@@ -2355,36 +2343,6 @@
 }
 
 {
-    "m_SGVersion": 3,
-    "m_Type": "UnityEditor.ShaderGraph.Internal.ColorShaderProperty",
-    "m_ObjectId": "892d948772664a01986deb8b83d7c156",
-    "m_Guid": {
-        "m_GuidSerialized": "82a48b42-e441-4b20-bdb7-04f6f7ea01ab"
-    },
-    "m_Name": "FogColor",
-    "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "FogColor",
-    "m_DefaultReferenceName": "_FogColor",
-    "m_OverrideReferenceName": "",
-    "m_GeneratePropertyBlock": true,
-    "m_UseCustomSlotLabel": false,
-    "m_CustomSlotLabel": "",
-    "m_DismissedVersion": 0,
-    "m_Precision": 0,
-    "overrideHLSLDeclaration": false,
-    "hlslDeclarationOverride": 0,
-    "m_Hidden": false,
-    "m_Value": {
-        "r": 0.2950044870376587,
-        "g": 0.25233888626098635,
-        "b": 0.3132075071334839,
-        "a": 1.0
-    },
-    "isMainColor": false,
-    "m_ColorMode": 0
-}
-
-{
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.DynamicVectorMaterialSlot",
     "m_ObjectId": "89da1c63e311466ca4e45801e7f1e489",
@@ -3831,34 +3789,6 @@
     },
     "m_ConversionType": 0,
     "m_Normalize": true
-}
-
-{
-    "m_SGVersion": 1,
-    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty",
-    "m_ObjectId": "f1c2a16271b44013ae84e8a53c7da848",
-    "m_Guid": {
-        "m_GuidSerialized": "c06c3d7f-6fe9-4476-9d46-0ef4a37018c9"
-    },
-    "m_Name": "FogDensity",
-    "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "FogDensity",
-    "m_DefaultReferenceName": "_FogDensity",
-    "m_OverrideReferenceName": "",
-    "m_GeneratePropertyBlock": true,
-    "m_UseCustomSlotLabel": false,
-    "m_CustomSlotLabel": "",
-    "m_DismissedVersion": 0,
-    "m_Precision": 0,
-    "overrideHLSLDeclaration": false,
-    "hlslDeclarationOverride": 0,
-    "m_Hidden": false,
-    "m_Value": 15.0,
-    "m_FloatType": 0,
-    "m_RangeValues": {
-        "x": 0.0,
-        "y": 1.0
-    }
 }
 
 {
