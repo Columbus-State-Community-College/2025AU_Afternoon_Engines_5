@@ -22,8 +22,8 @@ public class EnemyAgentBase : MonoBehaviour
     protected virtual void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-        agent.updateRotation = true;
         agent.updateUpAxis = false; 
+        agent.updateRotation = false;
     }
 
     protected virtual void Start()
@@ -42,6 +42,7 @@ public class EnemyAgentBase : MonoBehaviour
     protected virtual void Update()
     {
         MaintainHoverHeight();
+        RotateAgent();
     }
 
     protected bool PlayerInRange(float radius)
@@ -75,5 +76,16 @@ public class EnemyAgentBase : MonoBehaviour
         float cosHalfFov = Mathf.Cos(playerViewFov * 0.5f * Mathf.Deg2Rad);
 
         return dot >= cosHalfFov;
+    }
+
+    protected void RotateAgent()
+    {
+        var velocity = agent.velocity;
+        velocity.y = 0;
+
+        if (velocity != Vector3.zero)
+        {
+            transform.rotation = Quaternion.LookRotation(velocity) * Quaternion.Euler(0, 90, 0);
+        }
     }
 }
